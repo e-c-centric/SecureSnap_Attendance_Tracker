@@ -1,0 +1,101 @@
+
+
+.macbook-pro-16u34-4 {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  height: 1117px;
+  padding: 62px 128px;
+  width: 1728px;
+}
+
+.macbook-pro-16u34-4 .frame-1 {
+  align-items: flex-start;
+  background-color: #771414cf;
+  box-shadow: 0px 4px 4px #00000040;
+  display: flex;
+  flex-direction: column;
+  height: 949px;
+  margin-top: 44px;
+  padding: 23px 175px;
+  width: 1453px;
+}
+
+.macbook-pro-16u34-4 .title {
+  align-self: center;
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-l);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-right: 48.0px;
+  min-height: 51px;
+  min-width: 407px;
+}
+
+.macbook-pro-16u34-4 .place {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 13px;
+  margin-top: 33px;
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+.macbook-pro-16u34-4 .rectangle-1 {
+  margin-left: 13px;
+  margin-top: 14px;
+}
+
+.macbook-pro-16u34-4 .graduation-year {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: 23px;
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+.macbook-pro-16u34-4 .rectangle-2 {
+  margin-left: 2px;
+  margin-top: 25px;
+}
+
+.macbook-pro-16u34-4 .registration-date {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 2px;
+  margin-top: 29px;
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+.macbook-pro-16u34-4 .overlap-group {
+  align-items: flex-start;
+  align-self: center;
+  background-color: #771414;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+  display: flex;
+  height: 97px;
+  margin-right: 54.0px;
+  margin-top: 46px;
+  min-width: 323px;
+  padding: 24px 83px;
+}
+
+.macbook-pro-16u34-4 .place-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+.macbook-pro-16u34-4 .rectangle {
+  background-color: var(--white);
+  box-shadow: 0px 4px 4px #00000040;
+  height: 122px;
+  width: 1022px;
+}
+
+

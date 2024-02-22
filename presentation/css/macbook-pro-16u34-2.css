@@ -1,0 +1,127 @@
+
+
+.macbook-pro-16u34-2 {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 116px;
+  height: 1117px;
+  padding: 59px 34px;
+  width: 1728px;
+}
+
+.macbook-pro-16u34-2 .title {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 61px;
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+.macbook-pro-16u34-2 .flex-row {
+  align-items: center;
+  display: flex;
+  min-width: 1437px;
+}
+
+.macbook-pro-16u34-2 .vector-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+  margin-bottom: 197.69px;
+  min-height: 69px;
+  width: 20px;
+}
+
+.macbook-pro-16u34-2 .vector {
+  height: 20px;
+  width: 20px;
+}
+
+.macbook-pro-16u34-2 .sent-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  margin-bottom: 201.69px;
+  margin-left: 16px;
+  min-height: 75px;
+  width: 73px;
+}
+
+.macbook-pro-16u34-2 .sent {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-s);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+  white-space: nowrap;
+}
+
+.macbook-pro-16u34-2 .overlap-group1 {
+  margin-left: 34px;
+  position: relative;
+}
+
+.macbook-pro-16u34-2 .overlap-group {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.macbook-pro-16u34-2 .line-2 {
+  height: 7px;
+  left: 3px;
+  position: absolute;
+  top: 704px;
+  width: 1291px;
+}
+
+.macbook-pro-16u34-2 .line-3 {
+  height: 706px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 7px;
+}
+
+.macbook-pro-16u34-2 .rectangle-1 {
+  background-color: #30c37d;
+  height: 525px;
+  left: 189px;
+  position: absolute;
+  top: 182px;
+  width: 168px;
+}
+
+.macbook-pro-16u34-2 .rectangle-2 {
+  background-color: #af2435;
+  height: 280px;
+  left: 708px;
+  position: absolute;
+  top: 426px;
+  width: 160px;
+}
+
+.macbook-pro-16u34-2 .view-attendance {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-s);
+  font-weight: 400;
+  left: 990px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 598px;
+  white-space: nowrap;
+}
+
+.macbook-pro-16u34-2 .overlap {
+  height: 712px;
+  width: 1294px;
+}

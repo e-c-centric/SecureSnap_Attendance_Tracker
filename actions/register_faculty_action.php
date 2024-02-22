@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     $stmtFaculty->close();
 } else {
-    header("Location: register_faculty_form.php");
+    header("Location: register_faculty_view.php");
 }
 
 $conn->close();

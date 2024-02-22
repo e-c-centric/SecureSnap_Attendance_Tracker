@@ -1,0 +1,147 @@
+/* screen - login */
+
+.login {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: auto;
+}
+
+.login .rectangle-3 {
+  background-color: var(--falu-red);
+  height: 54px;
+  width: auto;
+}
+
+.login .title {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxxl);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 122.0px;
+  margin-top: 57px;
+  min-height: 64px;
+  width: 146px;
+}
+
+.login .overlap-group {
+  background-color: var(--quill-gray);
+  height: 118px;
+  margin-left: 50.0px;
+  margin-top: 59px;
+  position: relative;
+  width: 880px;
+}
+
+.login .vector {
+  height: 22px;
+  left: 58px;
+  position: absolute;
+  top: 49px;
+  width: 22px;
+}
+
+.login .rectangle-4 {
+  background-color: var(--falu-red);
+  height: 116px;
+  left: 0;
+  position: absolute;
+  top: 2px;
+  width: 161px;
+}
+
+.login .email {
+  left: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 52px;
+  white-space: nowrap;
+  width: 97px;
+}
+
+.login .overlap-group3 {
+  align-items: flex-start;
+  background-color: var(--quill-gray);
+  display: flex;
+  gap: 654px;
+  height: 118px;
+  margin-left: 50.0px;
+  margin-top: 81px;
+  min-width: 880px;
+}
+
+.login .overlap-group4 {
+  align-items: flex-start;
+  background-color: var(--falu-red);
+  display: flex;
+  height: 116px;
+  min-width: 161px;
+  padding: 43px 21px;
+}
+
+.login .vector-1 {
+  align-self: center;
+  height: 17px;
+  margin-top: 22.67px;
+  width: 25px;
+}
+
+.login .overlap-group1 {
+  align-items: flex-start;
+  background-color: var(--falu-red);
+  display: flex;
+  height: 118px;
+  margin-left: 147.0px;
+  margin-top: 43px;
+  min-width: 443px;
+  padding: 40px 169px;
+}
+
+.login .login {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 18px;
+  white-space: nowrap;
+}
+
+.login .overlap-group2 {
+  height: 53px;
+  margin-left: 165.0px;
+  margin-top: 19px;
+  position: relative;
+  width: 353px;
+}
+
+.login .vector-2 {
+  height: 25px;
+  left: 119px;
+  position: absolute;
+  top: 1px;
+  width: 9px;
+}
+
+.login .place {
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 0;
+  width: 180px;
+}
+
+.login .forgot-password {
+  left: 144px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 2px;
+  width: 209px;
+}

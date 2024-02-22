@@ -1,0 +1,248 @@
+.register {
+  align-items: center;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  height: 1024px;
+  overflow: hidden;
+  width: auto;
+}
+
+.register .rectangle-3 {
+  align-self: flex-end;
+  background-color: var(--falu-red);
+  height: 54px;
+  margin-right: -14px;
+  margin-top: -213px;
+  width: auto;
+}
+
+.register .title {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxxl);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 150.0px;
+  margin-top: 57px;
+  min-height: 64px;
+  width: auto;
+}
+
+.register .flex-row {
+  align-items: center;
+  display: flex;
+  gap: 273px;
+  height: 64px;
+  margin-right: 153.0px;
+  margin-top: 88px;
+  min-width: 533px;
+}
+
+.register .vector {
+  height: 22px;
+  margin-bottom: 2.12px;
+  width: 22px;
+}
+
+.register .place {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 64px;
+  width: auto;
+}
+
+.register .overlap-group1 {
+  background-color: var(--quill-gray);
+  height: 53px;
+  margin-left: 72.0px;
+  margin-top: 24px;
+  position: relative;
+  width: 862px;
+}
+
+.register .rectangle {
+  background-color: var(--falu-red);
+  height: 51px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 164px;
+}
+
+.register .first-name {
+  left: 19px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 16px;
+  white-space: nowrap;
+  width: 127px;
+}
+
+.register .overlap-group5 {
+  background-color: var(--quill-gray);
+  height: 53px;
+  margin-left: 66.0px;
+  margin-top: 20px;
+  position: relative;
+  width: 862px;
+}
+
+.register .rectangle-1 {
+  background-color: var(--falu-red);
+  height: 51px;
+  left: 3px;
+  position: absolute;
+  top: 0;
+  width: 164px;
+}
+
+.register .last-name {
+  left: 22px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 16px;
+  white-space: nowrap;
+  width: 127px;
+}
+
+.register .overlap-group {
+  background-color: var(--quill-gray);
+  height: 53px;
+  margin-left: 72.0px;
+  margin-top: 18px;
+  position: relative;
+  width: 862px;
+}
+
+.register .email {
+  left: 19px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 16px;
+  white-space: nowrap;
+  width: 127px;
+}
+
+.register .overlap-group6 {
+  background-color: var(--quill-gray);
+  height: 53px;
+  margin-left: 66.0px;
+  margin-top: 23px;
+  position: relative;
+  width: 862px;
+}
+
+.register .rectangle-12 {
+  background-color: var(--falu-red);
+  height: 51px;
+  left: 0;
+  position: absolute;
+  top: 2px;
+  width: 164px;
+}
+
+.register .department {
+  left: 22px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 18px;
+  white-space: nowrap;
+  width: 127px;
+}
+
+.register .overlap-group4 {
+  height: 54px;
+  margin-left: 66.0px;
+  margin-top: 18px;
+  position: relative;
+  width: 862px;
+}
+
+.register .rectangle-13 {
+  background-color: var(--quill-gray);
+  height: 53px;
+  left: 0;
+  position: absolute;
+  top: 1px;
+  width: 862px;
+}
+
+.register .phone {
+  left: 23px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 16px;
+  white-space: nowrap;
+  width: 127px;
+}
+
+.register .overlap-group3 {
+  align-items: flex-start;
+  background-color: var(--quill-gray);
+  display: flex;
+  gap: 663px;
+  height: 53px;
+  margin-left: 66.0px;
+  margin-top: 18px;
+  min-width: 862px;
+}
+
+.register .overlap-group7 {
+  align-items: flex-start;
+  background-color: var(--falu-red);
+  display: flex;
+  height: 51px;
+  justify-content: flex-end;
+  min-width: 164px;
+  padding: 15px;
+}
+
+.register .vector-1 {
+  align-self: center;
+  height: 17px;
+  margin-top: 1.67px;
+  width: 25px;
+}
+
+.register .overlap-group2 {
+  align-items: flex-start;
+  background-color: var(--falu-red);
+  display: flex;
+  height: 118px;
+  justify-content: center;
+  margin-left: 177.0px;
+  margin-top: 149px;
+  min-width: 443px;
+  padding: 34px 120px;
+}
+
+.register .place-1 {
+  color: #fff;
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 18px;
+  white-space: nowrap;
+}
+
+.register .have-an-account-already-login {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 177.0px;
+  margin-top: 18px;
+  min-height: 51px;
+  width: 375px;
+}

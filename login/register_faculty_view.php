@@ -30,13 +30,7 @@
             <div class="department inter-bold-white-20px">Department:</div>
           </div>
           <div class="dropdown">
-            <select name="department" id="department" required>
-              <option value="" disabled selected>Select Department</option>
-              <?php
-              include '../functions/select_dpt_fxn.php';
-              echo getDepartments();
-              ?>
-            </select>
+            
           </div>
           <div class="overlap-group4">
             <div class="rectangle-13"></div>
@@ -51,3 +45,11 @@
     </div>
   </body>
 </html>
+
+<select name="department" id="department" required>
+              <option value="" disabled selected>Select Department</option>
+              <?php
+              include '../functions/select_dpt_fxn.php';
+              echo getDepartments();
+              ?>
+            </select>

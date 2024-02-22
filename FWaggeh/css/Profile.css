@@ -1,0 +1,250 @@
+
+.Profile {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  height: 1024px;
+  width: 1440px;
+}
+
+.Profile .overlap-group {
+  align-items: flex-start;
+  background-color: var(--dark-burgundy);
+  display: flex;
+  height: 102px;
+  min-width: 1440px;
+  padding: 28px 101px;
+}
+
+.Profile .title {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 44px;
+}
+
+.Profile .flex-row {
+  gap: 319px;
+  height: 922px;
+  min-width: 1020px;
+}
+
+.Profile .overlap-group1 {
+  align-items: center;
+  background-color: var(--alto);
+  display: flex;
+  flex-direction: column;
+  min-height: 922px;
+  padding: 118px 0;
+  width: 101px;
+}
+
+.Profile .overlap-group5 {
+  align-items: center;
+  background-color: var(--white);
+  display: flex;
+  height: 100px;
+  margin-left: 1.0px;
+  min-width: 100px;
+  padding: 0 32px;
+}
+
+.Profile .vector {
+  height: 34px;
+  width: 34px;
+}
+
+.Profile .vector-1 {
+  height: 34px;
+  margin-right: 1.0px;
+  margin-top: 11px;
+  width: 36px;
+}
+
+.Profile .fluent-mdl2trackers {
+  height: 35px;
+  margin-right: 2.0px;
+  margin-top: 46px;
+  width: 35px;
+}
+
+.Profile .vector-2 {
+  height: 34px;
+  margin-left: 1.0px;
+  margin-top: 412px;
+  width: 34px;
+}
+
+.Profile .flex-col {
+  flex-direction: column;
+  margin-bottom: 45.0px;
+  min-height: 825px;
+  width: 600px;
+}
+
+.Profile .mask-group {
+  height: 320px;
+  margin-left: 38.0px;
+  width: 320px;
+}
+
+.Profile .overlap-group-container {
+  align-items: flex-start;
+  display: flex;
+  gap: 45px;
+  margin-right: 10.0px;
+  margin-top: 27px;
+  min-width: 540px;
+}
+
+.Profile .overlap-group2 {
+  align-items: flex-start;
+  background-color: var(--dark-burgundy);
+  border-radius: 25px;
+  display: flex;
+  height: 70px;
+  min-width: 273px;
+  padding: 15px 27px;
+}
+
+.Profile .change-photo {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 39px;
+}
+
+.Profile .overlap-group4 {
+  align-items: flex-start;
+  background-color: var(--dark-burgundy);
+  border-radius: 25px;
+  display: flex;
+  height: 70px;
+  min-width: 222px;
+  padding: 15px 32px;
+}
+
+.Profile .edit-profle {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 39px;
+}
+
+.Profile .flex-row-1 {
+  align-items: flex-start;
+  display: flex;
+  gap: 15px;
+  height: 338px;
+  margin-top: 70px;
+  min-width: 600px;
+}
+
+.Profile .flex-col-1 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3px;
+  min-height: 305px;
+  width: 36px;
+}
+
+.Profile .material-symbolsperson {
+  height: 35px;
+  margin-left: 1px;
+  width: 35px;
+}
+
+.Profile .ribuilding-fill {
+  height: 35px;
+  margin-left: 1px;
+  margin-top: 26px;
+  width: 35px;
+}
+
+.Profile .icbaseline-email {
+  height: 35px;
+  margin-top: 32px;
+  width: 35px;
+}
+
+.Profile .bxsid-card {
+  height: 35px;
+  margin-left: 1px;
+  margin-top: 32px;
+  width: 35px;
+}
+
+.Profile .icon-park-soliddegree-hat {
+  height: 35px;
+  margin-top: 40px;
+  width: 35px;
+}
+
+.Profile .flex-col-2 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 338px;
+  width: 549px;
+}
+
+.Profile .name-aaliya-saho {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 3px;
+  min-height: 39px;
+}
+
+.Profile .flex-col-item {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 3px;
+  margin-top: 28px;
+  min-height: 39px;
+}
+
+.Profile .overlap-group3 {
+  height: 50px;
+  margin-left: 3px;
+  margin-top: 17px;
+  position: relative;
+  width: 210px;
+}
+
+.Profile .id-45972029 {
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+}
+
+.Profile .text {
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 0;
+}
+
+.Profile .degree-b-sc {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: 28px;
+  min-height: 39px;
+}
+
+.Profile .number {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 64px;
+  min-height: 31px;
+  white-space: nowrap;
+}

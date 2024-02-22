@@ -1,0 +1,195 @@
+
+.Tracker {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  height: 1024px;
+  width: 1440px;
+}
+
+.Tracker .overlap-group {
+  align-items: center;
+  background-color: var(--dark-burgundy);
+  display: flex;
+  gap: 1113px;
+  height: 102px;
+  justify-content: flex-end;
+  min-width: 1440px;
+  padding: 0 31px;
+}
+
+.Tracker .title {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-bottom: 2.0px;
+  min-height: 44px;
+  min-width: 135px;
+}
+
+.Tracker .overlap-group4 {
+  background-color: var(--alto);
+  background-image: url(../img/mask-group-1@2x.png);
+  background-size: 100% 100%;
+  border-radius: 30px;
+  height: 60px;
+  width: 60px;
+}
+
+.Tracker .flex-row {
+  align-items: flex-start;
+  display: flex;
+  gap: 264px;
+  height: 922px;
+  min-width: 1063px;
+}
+
+.Tracker .overlap-group1 {
+  align-items: center;
+  background-color: var(--alto);
+  display: flex;
+  flex-direction: column;
+  min-height: 922px;
+  padding: 132px 0;
+  width: 101px;
+}
+
+.Tracker .vector {
+  height: 34px;
+  margin-right: 1.0px;
+  margin-top: 19px;
+  width: 34px;
+}
+
+.Tracker .vector-1 {
+  height: 34px;
+  margin-right: 1.0px;
+  margin-top: 44px;
+  width: 36px;
+}
+
+.Tracker .fluent-mdl2trackers {
+  height: 35px;
+  left: 31px;
+  position: absolute;
+  top: 34px;
+  width: 35px;
+}
+
+.Tracker .vector-2 {
+  height: 34px;
+  margin-left: 1.0px;
+  margin-top: 381px;
+  width: 34px;
+}
+
+.Tracker .flex-col {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 63px;
+  min-height: 534px;
+  width: 698px;
+}
+
+.Tracker .word-history-attendance {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 12.0px;
+  min-height: 44px;
+  min-width: 446px;
+}
+
+.Tracker .name {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 8.0px;
+  margin-top: 16px;
+  min-height: 44px;
+  min-width: 226px;
+}
+
+.Tracker .overlap-group2 {
+  height: 64px;
+  margin-top: 65px;
+  position: relative;
+  width: 698px;
+}
+
+.Tracker .rectangle-13 {
+  background-color: var(--alto);
+  height: 64px;
+  left: 5px;
+  position: absolute;
+  top: 0;
+  width: 693px;
+}
+
+.Tracker .past-schedule {
+  left: 423px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+}
+
+.Tracker .rectangle-14 {
+  background-color: var(--dark-burgundy);
+  height: 64px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 387px;
+}
+
+.Tracker .upcoming-schedule {
+  color: #fffcfc;
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  left: 47px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+}
+
+.Tracker .enter-pin-here {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 16.0px;
+  margin-top: 35px;
+  min-height: 39px;
+  min-width: 214px;
+}
+
+.Tracker .rectangle-15 {
+  background-color: var(--alto);
+  border-radius: 8px;
+  height: 79px;
+  margin-left: 13.0px;
+  margin-top: 50px;
+  width: 381px;
+}
+
+.Tracker .overlap-group3 {
+  align-items: flex-start;
+  background-color: var(--dark-burgundy);
+  border-radius: 8px;
+  display: flex;
+  height: 64px;
+  margin-left: 13.0px;
+  margin-top: 34px;
+  min-width: 155px;
+  padding: 12px 36px;
+}
+
+.Tracker .place {
+  color: #fffdfd;
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 39px;
+}

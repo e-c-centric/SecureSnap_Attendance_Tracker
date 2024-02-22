@@ -1,0 +1,98 @@
+:root { 
+  --alto: #d9d9d9;
+  --black: #000000;
+  --dark-burgundy: #761313;
+  --slimy-green: #3daa09;
+  --soapstone: #fffafa;
+  --soapstone-2: #fff9f9;
+  --white: #ffffff;
+ 
+  --font-size-l: 28px;
+  --font-size-m: 24px;
+  --font-size-s: 20px;
+  --font-size-xl: 32px;
+  --font-size-xs: 16px;
+  --font-size-xxl: 36px;
+  --font-size-xxxl: 64px;
+ 
+  --font-family-inter: "Inter", Helvetica;
+}
+.inter-bold-black-32px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.inter-normal-black-24px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.inter-medium-black-32px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.inter-normal-white-28px {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-l);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.inter-normal-soapstone-20px {
+  color: var(--soapstone);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.inter-bold-white-36px {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxl);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.inter-normal-soapstone-28px {
+  color: var(--soapstone-2);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-l);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.inter-bold-black-36px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxl);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.inter-semi-bold-dark-burgundy-36px {
+  color: var(--dark-burgundy);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxl);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.inter-normal-black-32px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-style: normal;
+  font-weight: 400;
+}

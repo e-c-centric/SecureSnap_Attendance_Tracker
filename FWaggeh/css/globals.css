@@ -1,0 +1,41 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Inter:700,600,300,500,400");
+@import url("https://px.animaapp.com/65b7ee7402498d0f7c17b5a2.65b7ee7402498d0f7c17b5a5.czqtDah.hcp.png");
+
+
+
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.flex {
+  align-items: center;
+  display: flex;
+}
+
+.fluent-mdltrackers-container {
+  background-color: var(--white);
+  height: 100px;
+  margin-left: 1.0px;
+  margin-top: 12px;
+  position: relative;
+  width: 100px;
+}

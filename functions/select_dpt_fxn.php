@@ -5,22 +5,17 @@ function getDepartments()
 {
     global $conn;
     $sql = "SELECT * FROM Departments";
-
-    // Execute query
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        $departments = array();
 
+    if ($result) {
+        $dropdownOptions = '';
         while ($row = $result->fetch_assoc()) {
-            $departments[] = $row;
+            $dropdownOptions .= '<option value="' . $row['DepartmentName'] . '">' . $row['DepartmentName'] . '</option>';
         }
-
-        return $departments;
+        return $dropdownOptions;
     } else {
-        return array();
+        return false;
     }
 }
 
-$conn->close();
-?>

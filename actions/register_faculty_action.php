@@ -4,8 +4,11 @@ include '../settings/config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $departmentID = mysqli_real_escape_string($conn, $_POST['department']);
+    $department = mysqli_real_escape_string($conn, $_POST['department']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    $departmentNo = "SELECT DepartmentID FROM Departments WHERE DepartmentName = '$department'  LIMIT 1";
+    $departmentID = $conn->query($departmentNo)->fetch_assoc()['DepartmentID'];
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -29,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     $stmtFaculty->close();
 } else {
-    header("Location: register_faculty_form.php");
+    header("Location: register_faculty_view.php");
 }
 
 $conn->close();

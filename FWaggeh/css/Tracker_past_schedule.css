@@ -1,0 +1,389 @@
+
+.Tracker_past_schedule {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  height: 1024px;
+  width: 1440px;
+}
+
+.Tracker_past_schedule .overlap-group6 {
+  align-items: center;
+  background-color: var(--dark-burgundy);
+  display: flex;
+  gap: 1113px;
+  height: 102px;
+  justify-content: flex-end;
+  min-width: 1440px;
+  padding: 0 31px;
+}
+
+.Tracker_past_schedule .title {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-bottom: 2.0px;
+  min-height: 44px;
+  min-width: 135px;
+}
+
+.Tracker_past_schedule .overlap-group12 {
+  background-color: var(--alto);
+  background-image: url(../img/mask-group-1@2x.png);
+  background-size: 100% 100%;
+  border-radius: 30px;
+  height: 60px;
+  width: 60px;
+}
+
+.Tracker_past_schedule .flex-row {
+  gap: 266px;
+  height: 922px;
+  min-width: 1068px;
+}
+
+.Tracker_past_schedule .overlap-group-1 {
+  align-items: center;
+  background-color: var(--alto);
+  display: flex;
+  flex-direction: column;
+  min-height: 922px;
+  padding: 132px 0;
+  width: 101px;
+}
+
+.Tracker_past_schedule .vector {
+  height: 34px;
+  margin-right: 1.0px;
+  margin-top: 19px;
+  width: 34px;
+}
+
+.Tracker_past_schedule .vector-1 {
+  height: 34px;
+  margin-right: 1.0px;
+  margin-top: 44px;
+  width: 36px;
+}
+
+.Tracker_past_schedule .overlap-group13 {
+  align-items: flex-end;
+  background-color: var(--white);
+  display: flex;
+  height: 100px;
+  margin-left: 1.0px;
+  margin-top: 12px;
+  min-width: 100px;
+  padding: 31px;
+}
+
+.Tracker_past_schedule .fluent-mdl2trackers {
+  height: 35px;
+  width: 35px;
+}
+
+.Tracker_past_schedule .vector-2 {
+  height: 34px;
+  margin-left: 1.0px;
+  margin-top: 381px;
+  width: 34px;
+}
+
+.Tracker_past_schedule .flex-col {
+  flex-direction: column;
+  margin-bottom: 31.97px;
+  min-height: 764px;
+  width: 701px;
+}
+
+.Tracker_past_schedule .word-history-attendance {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 5.01px;
+  min-height: 44px;
+  min-width: 446px;
+}
+
+.Tracker_past_schedule .name {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 1.01px;
+  margin-top: 16px;
+  min-height: 44px;
+  min-width: 226px;
+}
+
+.Tracker_past_schedule .overlap-group2 {
+  height: 64px;
+  margin-left: 1.01px;
+  margin-top: 65px;
+  position: relative;
+  width: 696px;
+}
+
+.Tracker_past_schedule .rectangle-13 {
+  background-color: var(--alto);
+  left: 0;
+  width: 693px;
+}
+
+.Tracker_past_schedule .rectangle-14 {
+  background-color: var(--dark-burgundy);
+  left: 365px;
+  width: 331px;
+}
+
+.Tracker_past_schedule .upcoming-schedule {
+  left: 42px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+}
+
+.Tracker_past_schedule .past-schedule {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  left: 418px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+}
+
+.Tracker_past_schedule .total-statistics-57-l1-p5-a1 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 71.01px;
+  margin-top: 42px;
+  min-height: 29px;
+  min-width: 384px;
+}
+
+.Tracker_past_schedule .overlap-group-container {
+  height: 59px;
+  margin-left: 1.0px;
+  margin-top: 23px;
+  position: relative;
+  width: 696px;
+}
+
+.Tracker_past_schedule .overlap-group7 {
+  height: 36px;
+  left: 0;
+  position: absolute;
+  top: 23px;
+  width: 696px;
+}
+
+.Tracker_past_schedule .line-1 {
+  left: 0;
+  position: absolute;
+  top: 28px;
+}
+
+.Tracker_past_schedule .mon-14-mar-2024-806 {
+  left: 11px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 0;
+}
+
+.Tracker_past_schedule .overlap-group11 {
+  align-items: flex-end;
+  background-color: #cdde10;
+  border-radius: 19px;
+  display: flex;
+  height: 37px;
+  justify-content: flex-end;
+  left: 565px;
+  min-width: 113px;
+  padding: 6px 35px;
+  position: absolute;
+  top: 0;
+}
+
+.Tracker_past_schedule .late {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+  min-width: 42px;
+  white-space: nowrap;
+}
+
+.Tracker_past_schedule .flex-row-1 {
+  gap: 303px;
+  height: 49px;
+  margin-right: 5.99px;
+  margin-top: 4px;
+  min-width: 667px;
+}
+
+.Tracker_past_schedule .fri-1-mar-2024-1305 {
+  align-self: flex-end;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 29px;
+  min-width: 251px;
+}
+
+.Tracker_past_schedule .overlap-group {
+  align-items: flex-start;
+  background-color: var(--slimy-green);
+  border-radius: 19px;
+  display: flex;
+  height: 37px;
+  min-width: 113px;
+  padding: 6px 20px;
+}
+
+.Tracker_past_schedule .sent {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+  white-space: nowrap;
+}
+
+.Tracker_past_schedule .line-2 {
+  margin-left: 1.0px;
+  margin-top: 2px;
+}
+
+.Tracker_past_schedule .flex-row-2 {
+  gap: 265px;
+  height: 44px;
+  margin-right: 5.99px;
+  margin-top: 9px;
+  min-width: 667px;
+}
+
+.Tracker_past_schedule .wed-28-feb-2024-1300 {
+  align-self: flex-end;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 29px;
+  min-width: 289px;
+}
+
+.Tracker_past_schedule .overlap-group4 {
+  align-items: flex-start;
+  background-image: url(../img/line-2.svg);
+  background-position: 50% 50%;
+  background-size: cover;
+  display: flex;
+  margin-left: 5.0px;
+  margin-top: 2px;
+  min-width: 696px;
+}
+
+.Tracker_past_schedule .flex-row-3 {
+  gap: 277px;
+  height: 41px;
+  margin-right: 5.99px;
+  margin-top: 9px;
+  min-width: 667px;
+}
+
+.Tracker_past_schedule .mon-26-feb-2024-805 {
+  align-self: flex-end;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 29px;
+  min-width: 277px;
+}
+
+.Tracker_past_schedule .line {
+  height: 8px;
+  margin-left: 5.0px;
+  margin-top: 5px;
+  object-fit: cover;
+  width: 696px;
+}
+
+.Tracker_past_schedule .flex-row-4 {
+  gap: 286px;
+  height: 45px;
+  margin-right: 5.99px;
+  margin-top: 9px;
+  min-width: 667px;
+}
+
+.Tracker_past_schedule .fri-23-feb-2024-1309 {
+  align-self: flex-end;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 29px;
+  min-width: 268px;
+}
+
+.Tracker_past_schedule .line-6 {
+  margin-left: 5.0px;
+  margin-top: 1px;
+}
+
+.Tracker_past_schedule .flex-row-5 {
+  gap: 269px;
+  height: 41px;
+  margin-right: 5.99px;
+  margin-top: 9px;
+  min-width: 667px;
+}
+
+.Tracker_past_schedule .wed-21-feb-2024-1325 {
+  align-self: flex-end;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 29px;
+  min-width: 285px;
+}
+
+.Tracker_past_schedule .overlap-group9 {
+  align-items: flex-start;
+  background-color: #aa0909;
+  border-radius: 19px;
+  display: flex;
+  height: 37px;
+  min-width: 113px;
+  padding: 6px 24px;
+}
+
+.Tracker_past_schedule .flex-row-6 {
+  gap: 287px;
+  height: 41px;
+  margin-right: 12.99px;
+  margin-top: 9px;
+  min-width: 674px;
+}
+
+.Tracker_past_schedule .mon-19-feb-2024-800 {
+  align-self: flex-end;
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 29px;
+  min-width: 274px;
+}
+
+.Tracker_past_schedule .line-8 {
+  margin-right: 5.0px;
+  margin-top: 5px;
+}
+
+.Tracker_past_schedule .flex-row-7 {
+  align-items: flex-start;
+  display: flex;
+}
+
+.Tracker_past_schedule .line-3 {
+  height: 8px;
+  object-fit: cover;
+  width: 696px;
+}
+
+.Tracker_past_schedule .rectangle {
+  height: 64px;
+  position: absolute;
+  top: 0;
+}

@@ -9,7 +9,7 @@
 
 <body>
     <h2>Register Faculty</h2>
-    <form id="registerForm" action="register_faculty_action.php" method="POST">
+    <form id="registerForm" action="./../actions/register_faculty_action.php" method="POST">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" required><br><br>
 
@@ -19,7 +19,7 @@
         <div class="input">
             <div>Department</div>
             <div class="dropdown">
-                <select name="familyRole" id="familyRole" required>
+                <select name="department" id="department" required>
                     <option value="" disabled selected>Select Department</option>
                     <?php
                     include '../functions/select_dpt_fxn.php';
@@ -35,25 +35,6 @@
         <input type="submit" value="Register">
     </form>
 
-    <script>
-        function getDepartments() {
-            fetch('select_dept_fxn.php')
-                .then(response => response.json())
-                .then(data => {
-                    const departmentDropdown = document.getElementById('department');
-                    departmentDropdown.innerHTML = '<option value="">Select Department</option>';
-                    data.forEach(department => {
-                        const option = document.createElement('option');
-                        option.value = department.DepartmentID;
-                        option.textContent = department.DepartmentName;
-                        departmentDropdown.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error fetching departments:', error));
-        }
-
-        window.onload = getDepartments;
-    </script>
 </body>
 
 </html>

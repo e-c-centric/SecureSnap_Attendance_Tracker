@@ -2,7 +2,7 @@
 include '../settings/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $name = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $department = mysqli_real_escape_string($conn, $_POST['department']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtFaculty->bind_param("ii", $userID, $departmentID);
 
         if ($stmtFaculty->execute()) {
-            echo "Faculty registered successfully";
+            header("Location: ./../login/login.php");
         } else {
             echo "Error: " . $stmtFaculty->error;
         }

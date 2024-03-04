@@ -1,12 +1,10 @@
-
-
 .macbook-pro-16u34-1 {
   align-items: flex-start;
   background-color: var(--white);
   display: flex;
   height: 1117px;
   padding: 80px 143px;
-  width: 1728px;
+  width: auto;
 }
 
 .macbook-pro-16u34-1 .flex-col {
@@ -15,7 +13,7 @@
   flex-direction: column;
   margin-top: 3px;
   min-height: 954px;
-  width: 371px;
+  width: auto;
 }
 
 .macbook-pro-16u34-1 .title {
@@ -55,7 +53,7 @@
 
 .macbook-pro-16u34-1 .flex-col-2 {
   margin-left: 145px;
-  width: 350px;
+  width: auto;
 }
 
 .macbook-pro-16u34-1 .flex-col-3 {
@@ -71,5 +69,5 @@
   align-self: flex-end;
   background-color: var(--alto);
   height: 309px;
-  width: 350px;
+  width: auto;
 }

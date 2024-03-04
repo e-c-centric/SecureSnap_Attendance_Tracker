@@ -2,14 +2,9 @@
 include('./../settings/config.php');
 
 global $conn;
+session_start();
 
-function redirects_with($url, $params = [])
-{
-    $query = http_build_query($params);
-    $fullUrl = "{$url}?{$query}";
-    header("Location: {$fullUrl}");
-    exit;
-}
+$result = array('login' => 'failed', 'message' => '');
 
 function is_post_request()
 {
@@ -17,24 +12,26 @@ function is_post_request()
 }
 
 if (is_post_request()) {
-    $username = $_POST['email'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Use prepared statement to prevent SQL injection
-    $sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $_SESSION['UserID'] = $row['UserID'];
-        redirects_with('./../views/dashboard.html', ['login' => 'success']);
-    } else {
-        redirects_with('./../login/login.php', ['login' => 'failed']);
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    if ($row) {
+        $hashedPassword = $row['Password'];
+        if (password_verify($password, $hashedPassword)) {
+            $_SESSION['email'] = $email;
+            $_SESSION['UserID'] = $row['UserID'];
+            $response['login'] = 'success';
+        } else {
+            $response['message'] = 'Invalid username or password';
+        }
     }
 } else {
-    redirects_with('./../login/login.php');
+    $response['message'] = 'Invalid request';
 }
-?>
+
+echo json_encode($response);

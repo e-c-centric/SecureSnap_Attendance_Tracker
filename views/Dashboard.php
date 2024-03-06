@@ -1,3 +1,11 @@
+<?php
+include_once './../settings/core.php';
+
+if (!is_logged_in()) {
+  header('Location: ./../index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -131,42 +139,9 @@
   <!-- get active page from the main page calling the header -->
 
   <!--Top Navigation-->
-  <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #923D41;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-
-        <li class="nav-item active">
-          <a class="nav-link" href="dashboard.php">
-            <span>| </span>
-            <span class="fas fa-industry"></span>
-            <span>Dashboard</span>
-          </a>
-        </li>
-
-        <li class="nav-item ">
-          <a class="nav-link" href="profile.php">
-            <span>| </span>
-            <span class="fas fa-edit"></span>
-            <span>Profile</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="./../login/logout.php">
-            <span>| </span>
-            <span class="fas fa-sign-out-alt"></span>
-            <span>Logout</span>
-          </a>
-        </li>
-
-      </ul>
-    </div>
-  </nav>
-  <br>
+  <?php
+  include 'head.php';
+  ?>
   <div class="topnav">
     <input id="search" type="text" placeholder="Search for course..">
   </div>
@@ -175,60 +150,58 @@
   <div class="container">
     <div class="row">
 
-      <div class='col-lg-3 col-md-4 col-sm-6'>
-        <div class='card h-100' style='background-color:#5F9EA0'>
-          <a href='student_attendance?cid=73'>
-            <i class='bx bx-badge-check'></i>
-            <h5>CS341</h5>
-            <h3><b>Web Technologies</b></h3>
-            <h5>2nd Semester (Spring)</h5>
-            <h6>2023/2024</h6>
-            <h6>Cohort_A</h6>
-        </div>
-      </div>
-      <div class='col-lg-3 col-md-4 col-sm-6'>
-        <div class='card h-100' style='background-color:#5F9EA0'>
-          <a href='student_attendance?cid=64'>
-            <i class='bx bx-badge-check'></i>
-            <h5>CS221</h5>
-            <h3><b>Discrete Structures and Theories</b></h3>
-            <h5>2nd Semester (Spring)</h5>
-            <h6>2022/2023</h6>
-            <h6>Cohort_A</h6>
-        </div>
-      </div>
-      <div class='col-lg-3 col-md-4 col-sm-6'>
-        <div class='card h-100' style='background-color:#5F9EA0'>
-          <a href='student_attendance?cid=48'>
-            <i class='bx bx-badge-check'></i>
-            <h5>CS213</h5>
-            <h3><b>Object Oriented Programming</b></h3>
-            <h5>2nd Semester (Spring)</h5>
-            <h6>2022/2023</h6>
-            <h6>Cohort_A</h6>
-        </div>
-      </div>
-      <div class='col-lg-3 col-md-4 col-sm-6'>
-        <div class='card h-100' style='background-color:#5F9EA0'>
-          <a href='student_attendance?cid=14'>
-            <i class='bx bx-badge-check'></i>
-            <h5>CS212</h5>
-            <h3><b>Computer Programming for CS </b></h3>
-            <h5>1st Semester (Fall)</h5>
-            <h6>2022/2023</h6>
-            <h6>Cohort_C</h6>
-        </div>
-      </div>
-      <div class='col-lg-3 col-md-4 col-sm-6'>
-        <div class='card h-100' style='background-color:#5F9EA0'>
-          <a href='student_attendance?cid=13'>
-            <i class='bx bx-badge-check'></i>
-            <h5>CS211</h5>
-            <h3><b>Computer Programming for Engineers</b></h3>
-            <h5>1st Semester (Fall)</h5>
-            <h6>2022/2023</h6>
-            <h6>Cohort_C</h6>
-        </div>
+      <?php
+      if ($_SESSION['UserRole'] === 'student') {
+        include './../actions/get_enrolled_courses.php';
+
+        if (!empty($enrolledCourses)) {
+          foreach ($enrolledCourses as $course) {
+            echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
+            echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+            echo "<a href='student_attendance.php?courseID=" . $course['CourseID'] . "'>";
+            echo "<i class='bx bx-badge-check'></i>";
+            echo "<h5>" . $course['CourseCode'] . "</h5>";
+            echo "<h3><b>" . $course['CourseName'] . "</b></h3>";
+            echo "<h5>" . $course['Semester'] . "</h5>";
+            echo "<h6>" . $course['AcademicYear'] . "</h6>";
+            echo "<h6>Cohort " . $course['Cohort'] . "</h6>";
+            echo "</div>";
+            echo "</div>";
+          }
+        } else {
+          echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
+          echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+          echo "<h3>No courses enrolled.</h3>";
+          echo "</div>";
+          echo "</div>";
+        }
+      }
+      else{
+        include './../actions/get_courses_taught_action.php';
+        if (!empty($coursesTaught)) {
+          foreach ($coursesTaught as $course) {
+            echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
+            echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+            echo "<a href='faculty_attendance.php?courseID=" . $course['CourseID'] . "'>";
+            echo "<i class='bx bx-badge-check'></i>";
+            echo "<h5>" . $course['CourseCode'] . "</h5>";
+            echo "<h3><b>" . $course['CourseName'] . "</b></h3>";
+            echo "<h5>" . $course['Semester'] . "</h5>";
+            echo "<h6>" . $course['AcademicYear'] . "</h6>";
+            echo "<h6>Cohort " . $course['Cohort'] . "</h6>";
+            echo "</div>";
+            echo "</div>";
+          }
+        } else {
+          echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
+          echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+          echo "<h3>No courses taught.</h3>";
+          echo "</div>";
+          echo "</div>";
+        }
+      }
+
+      ?>
     </div>
   </div>
 

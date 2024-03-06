@@ -1,10 +1,10 @@
 <?php
 include('./../settings/config.php');
+include('./../settings/core.php');
 
 global $conn;
-session_start();
 
-$result = array('login' => 'failed', 'message' => '');
+$response = array('login' => 'failed', 'message' => '');
 
 function is_post_request()
 {
@@ -25,7 +25,10 @@ if (is_post_request()) {
         if (password_verify($password, $hashedPassword)) {
             $_SESSION['email'] = $email;
             $_SESSION['UserID'] = $row['UserID'];
+            $_SESSION['UserRole'] = $row['UserType'];
+            $_SESSION['Name'] = $row['Name'];
             $response['login'] = 'success';
+            $response['message'] = 'Login successful';
         } else {
             $response['message'] = 'Invalid username or password';
         }

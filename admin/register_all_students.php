@@ -6,6 +6,9 @@
     <link href="./../css/register.css" rel="stylesheet" type="text/css">
 </head>
 <body>`
+    <?php
+    include './../views/head.php';
+    ?>
     <div class="register">
         <h1>Upload CSV File</h1>
         <form action="./../actions/upload_csv_action.php" method="post" enctype="multipart/form-data">

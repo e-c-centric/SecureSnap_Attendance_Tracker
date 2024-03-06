@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
             $major = $data[3];
             $year_group = $data[4];
 
-            $password = $email;
+            $password = password_hash($email, PASSWORD_DEFAULT);
 
             $user_insert_query = "INSERT INTO Users (UserID, Name, Email, Password, UserType)
                                   VALUES ('$student_id', '$name', '$email', '$password', 'student')";

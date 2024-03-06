@@ -2,12 +2,13 @@
 
 include './../settings/config.php';
 
-if (isset($_GET['course_id'])) {
+if (isset($_GET['course_id']) && isset($_GET['student_id'])) {
     $courseID = $_GET['course_id'];
+    $studentID = $_GET['student_id'];
 
     $sql = "SELECT a.*, u.Name AS StudentName FROM attendance a
             INNER JOIN users u ON a.StudentID = u.UserID
-            WHERE a.CourseID = $courseID";
+            WHERE a.CourseID = $courseID AND a.StudentID = $studentID";
 
     $result = $conn->query($sql);
 

@@ -148,7 +148,6 @@ include './../settings/core.php';
           </ul>
         </small>
         <ul class="list-group" id="upSchedules">
-          No Course schedule found
         </ul>
 
       </div>
@@ -159,10 +158,10 @@ include './../settings/core.php';
 
         <div class="text-center">Total Statistics
           <p>
-            <span>Total - </span><span id="totalStats" class="badge badge-pill badge-primary">...</span>
-            <span>Present - </span><span id="presentStats" class="badge badge-pill badge-success">...</span>
-            <span>Late - </span><span id="lateStats" class="badge badge-pill badge-warning">...</span>
-            <span>Absent - </span><span id="absentStats" class="badge badge-pill badge-danger">...</span>
+            <span>Total - </span><span id="totalStats" class="badge badge-pill badge-primary">0</span>
+            <span>Present - </span><span id="presentStats" class="badge badge-pill badge-success">0</span>
+            <span>Late - </span><span id="lateStats" class="badge badge-pill badge-warning">0</span>
+            <span>Absent - </span><span id="absentStats" class="badge badge-pill badge-danger">0</span>
           </p>
         </div>
 
@@ -186,7 +185,7 @@ include './../settings/core.php';
 
           <!--Add Error Messages-->
           <div class="alert alert-danger fade collapse" id="pin_empty">
-            PIN cannot be empty
+            PIN failed. Try again.
           </div>
           <div class="alert alert-danger fade collapse" id="pin_invalid">
             <strong>Failed!</strong> invalid PIN.
@@ -210,7 +209,7 @@ include './../settings/core.php';
                 </div>
 
                 <div class="form-group">
-                  <button type="submit" class="btn btn-block btn-success" id="addbutton" onclick="verifyPin()"><i class="fa fa-user-plus"></i> Confirm Attendance</button>
+                  <button type="submit" class="btn btn-block btn-success" id="addbutton" onclick="verifyPin(event)"><i class="fa fa-user-plus"></i> Confirm Attendance</button>
                 </div>
               </form>
 
@@ -255,15 +254,39 @@ include './../settings/core.php';
         }
 
       });
+      upcomingSchedules();
     });
+
+    function upcomingSchedules() {
+      var course_id = <?php echo $courseID; ?>;
+      $.ajax({
+        url: './../actions/get_upcoming_schedules.php?courseID=' + course_id,
+        type: 'GET',
+        success: function(data) {
+          var parsedData = JSON.parse(data);
+          if (parsedData.success) {
+            var day = parsedData.day;
+            var time = parsedData.time;
+            var schedules = "<li class='list-group-item d-flex justify-content-between align-items-center'>Today: " + day + " Time <div id ='times'>" + time + "</div><button type='button' class='btn btn - primary' data-toggle='modal' data-target='#addModal'>Take Attendance</button></li >";
+            document.getElementById('upSchedules').innerHTML = schedules;
+          } else {
+            document.getElementById('upSchedules').innerHTML = parsedData.message;
+          }
+        },
+        error: function() {
+          alert("Error fetching data.");
+        }
+      });
+    };
 
 
     document.getElementById('pastView').addEventListener('click', pastRecords);
 
     function pastRecords() {
       var course_id = <?php echo $courseID; ?>;
+      var student_id = <?php echo $_SESSION['UserID']; ?>;
       $.ajax({
-        url: './../actions/get_student_attendance_records.php?course_id=' + course_id,
+        url: './../actions/get_student_attendance_records.php?course_id=' + course_id + '&student_id=' + student_id,
         type: 'GET',
         success: function(data) {
           console.log(data["StatisticsData"]);
@@ -302,6 +325,41 @@ include './../settings/core.php';
           alert('Error fetching data.');
         }
       });
+    }
+
+    function verifyPin(event) {
+      event.preventDefault();
+      var course_id = <?php echo $courseID; ?>;
+      var pin = document.getElementById('apin').value;
+      if (pin == "" || isNaN(pin) || pin.length < 4 || pin.length > 4) {
+        document.getElementById('pin_empty').classList.remove('collapse');
+        setTimeout(function() {
+          document.getElementById('pin_empty').classList.add('collapse');
+        }, 3000);
+      } else {
+        $.ajax({
+          url: './../actions/verify_attendance_pin.php?courseID=' + course_id + '&pin=' + pin + '&times=' + document.getElementById('times').innerText,
+          type: 'GET',
+          success: function(data) {
+            if (data == "success") {
+              swal("Success!", "Attendance verified", "success");
+              document.getElementById('apin').value = "";
+              $('#addModal').modal('hide');
+            } else {
+              document.getElementById('pin_invalid').classList.remove('collapse');
+              setTimeout(function() {
+                document.getElementById('pin_invalid').classList.add('collapse');
+              }, 3000);
+            }
+          },
+          error: function() {
+            document.getElementById('pin_failed').classList.remove('collapse');
+            setTimeout(function() {
+              document.getElementById('pin_failed').classList.add('collapse');
+            }, 3000);
+          }
+        });
+      }
     }
   </script>
 </body>

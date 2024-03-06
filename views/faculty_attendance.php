@@ -1,7 +1,5 @@
 <?php
 $courseID = $_GET['courseID'];
-include './../settings/config.php';
-include './../settings/core.php';
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +137,6 @@ include './../settings/core.php';
             <!-- upcoming pane -->
             <div class="container tab-pane active" id="upview"><br>
 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#setPinModal">Start Attendance</button>
 
                 <ul class="list-group" id="upSchedules">
                     No Course schedule found
@@ -203,7 +200,7 @@ include './../settings/core.php';
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-block btn-success" id="setPinButton" onclick="setPin()"><i class="fa fa-user-plus"></i> Set PIN</button>
+                                    <button type="submit" class="btn btn-block btn-success" id="setPinButton" onclick="setPin(event)"><i class="fa fa-user-plus"></i> Set PIN</button>
                                 </div>
                             </form>
 
@@ -228,8 +225,10 @@ include './../settings/core.php';
 
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var course_id = <?php echo $courseID; ?>;
+        var courseID = <?php echo $courseID; ?>;
+
+        window.onload = function() {
+            var course_id = courseID;
             $.ajax({
                 url: './../actions/get_course_details.php?course_id=' + course_id,
                 type: 'GET',
@@ -246,13 +245,36 @@ include './../settings/core.php';
                 }
 
             });
-        });
+            upcomingSchedules();
+        }
+
+        function upcomingSchedules() {
+            var course_id = courseID;
+            $.ajax({
+                url: './../actions/get_upcoming_schedules.php?courseID=' + course_id,
+                type: 'GET',
+                success: function(data) {
+                    var parsedData = JSON.parse(data)[0];
+                    if (parsedData.success) {
+                        var day = parsedData.day;
+                        var time = parsedData.time;
+                        var schedules = "<li class='list-group-item d-flex justify-content-between align-items-center'>Today: " + day + " Time " + time + "<button type='button' class='btn btn - primary' data-toggle='modal' data-target='#setPinModal'>Start Attendance</button></li >";
+                        document.getElementById('upSchedules').innerHTML = schedules;
+                    } else {
+                        document.getElementById('upSchedules').innerHTML = parsedData.message;
+                    }
+                },
+                error: function() {
+                    alert("Error fetching data.");
+                }
+            });
+        };
 
 
         document.getElementById('pastView').addEventListener('click', pastRecords);
 
         function pastRecords() {
-            var course_id = <?php echo $courseID; ?>;
+            var course_id = courseID;
             $.ajax({
                 url: './../actions/get_attendance_records_by_course.php?courseID=' + course_id,
                 type: 'GET',
@@ -297,7 +319,8 @@ include './../settings/core.php';
             });
         }
 
-        function setPin() {
+        function setPin(event) {
+            event.preventDefault();
             var newPin = document.getElementById('newPin').value;
             if (newPin == "") {
                 document.getElementById('pin_empty').classList.add('show');
@@ -306,16 +329,15 @@ include './../settings/core.php';
                 }, 3000);
                 return;
             }
-            if (newPin.length != 4) {
+            if ((newPin.length != 4) || isNaN(newPin)) {
                 document.getElementById('pin_invalid').classList.add('show');
                 setTimeout(function() {
                     document.getElementById('pin_invalid').classList.remove('show');
                 }, 3000);
                 return;
             }
-            var course_id = <?php echo $courseID; ?>;
             $.ajax({
-                url: './../actions/set_attendance_pin.php?courseID=' + course_id + '&pin=' + newPin,
+                url: './../actions/set_attendance_pin.php?courseID=' + courseID + '&pin=' + newPin,
                 type: 'GET',
                 success: function(data) {
                     if (data == "success") {
@@ -323,6 +345,18 @@ include './../settings/core.php';
                             icon: "success",
                         });
                         $('#setPinModal').modal('hide');
+                        setTimeout(function() {
+                            $.ajax({
+                                url: './../actions/unset_attendance_pin.php?courseID=' + courseID,
+                                type: 'GET',
+                                success: function(data) {
+                                    console.log("PIN unset successfully");
+                                },
+                                error: function() {
+                                    console.log("Error unsetting PIN.");
+                                }
+                            });
+                        }, 0.5 * 60 * 1000);
                     } else {
                         swal("Failed to set PIN", {
                             icon: "error",
@@ -333,6 +367,8 @@ include './../settings/core.php';
                     alert("Error setting PIN.");
                 }
             });
+
+
         }
     </script>
 </body>

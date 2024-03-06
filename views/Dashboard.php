@@ -142,9 +142,7 @@ if (!is_logged_in()) {
   <?php
   include 'head.php';
   ?>
-  <div class="topnav">
-    <input id="search" type="text" placeholder="Search for course..">
-  </div>
+
 
   <!--Main Body Content-->
   <div class="container">
@@ -164,7 +162,7 @@ if (!is_logged_in()) {
             echo "<h3><b>" . $course['CourseName'] . "</b></h3>";
             echo "<h5>" . $course['Semester'] . "</h5>";
             echo "<h6>" . $course['AcademicYear'] . "</h6>";
-            echo "<h6>Cohort " . $course['Cohort'] . "</h6>";
+            echo "<h6>Cohort " . $course['Cohort'] . "</h6></a>";
             echo "</div>";
             echo "</div>";
           }
@@ -175,8 +173,20 @@ if (!is_logged_in()) {
           echo "</div>";
           echo "</div>";
         }
-      }
-      else{
+      } else {
+
+        echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
+        echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+        echo "<a href='create_course.php'>";
+        echo "<i class='bx bx-cog'></i>";
+        echo "<h5> </h5>";
+        echo "<h5> </h5>";
+        echo "<h6> </h6>";
+        echo "<h3><b>Create A New Course</b></h3>";
+        echo "<h6> </h6></a>";
+        echo "</div>";
+        echo "</div>";
+
         include './../actions/get_courses_taught_action.php';
         if (!empty($coursesTaught)) {
           foreach ($coursesTaught as $course) {
@@ -188,7 +198,7 @@ if (!is_logged_in()) {
             echo "<h3><b>" . $course['CourseName'] . "</b></h3>";
             echo "<h5>" . $course['Semester'] . "</h5>";
             echo "<h6>" . $course['AcademicYear'] . "</h6>";
-            echo "<h6>Cohort " . $course['Cohort'] . "</h6>";
+            echo "<h6>Cohort " . $course['Cohort'] . "</h6></a>";
             echo "</div>";
             echo "</div>";
           }
@@ -203,20 +213,10 @@ if (!is_logged_in()) {
 
       ?>
     </div>
+
   </div>
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      //search app list 
-      $("#search").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $(".row .column").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
-  </script>
-
 </body>
+
 
 </html>

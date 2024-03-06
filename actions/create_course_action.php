@@ -11,7 +11,7 @@ if (!is_logged_in()) {
     session_destroy();
     header('Location: ./../index.php');
 }
-
+$response = "";
 $userID = $_SESSION['UserID'];
 $userRole = $_SESSION['UserRole'];
 
@@ -23,8 +23,8 @@ if ($userRole === 'faculty') {
     $cohort = $_POST["cohort"];
     $semester = $_POST["semester"];
     $academicYear = $_POST["academicYear"];
-    $classDays = $_POST["classDays"];
-    $classTimes = $_POST["classTimes"];
+    $classDays = implode(",", $_POST['classDays']);
+    $classTimes = implode(",", $_POST['classTimes']);
     $facultyID = $userID;
 
     $sql = "INSERT INTO courses (CourseCode, CourseName, FacultyID, Cohort, Semester, AcademicYear, ClassDays, ClassTimes) 
@@ -34,7 +34,7 @@ if ($userRole === 'faculty') {
         $stmt->bind_param("ssississ", $courseCode, $courseName, $facultyID, $cohort, $semester, $academicYear, $classDays, $classTimes);
 
         if ($stmt->execute()) {
-            echo "Course created successfully";
+            echo "success";
             exit();
         } else {
             echo "Oops! Something went wrong. Please try again later.";
@@ -44,7 +44,6 @@ if ($userRole === 'faculty') {
     }
 
     $conn->close();
-}
-else {
+} else {
     echo "You are not authorized to create a course";
 }

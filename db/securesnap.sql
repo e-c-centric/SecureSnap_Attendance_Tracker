@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2024 at 02:46 PM
+-- Generation Time: Mar 06, 2024 at 05:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,19 +24,76 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `attendance`
+--
+
+CREATE TABLE `attendance` (
+  `AttendanceID` int(11) NOT NULL,
+  `StudentID` int(11) NOT NULL,
+  `CourseID` int(11) NOT NULL,
+  `AttendanceDateTime` datetime NOT NULL,
+  `Status` enum('present','late','absent') NOT NULL,
+  `Picture` longblob DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`AttendanceID`, `StudentID`, `CourseID`, `AttendanceDateTime`, `Status`, `Picture`) VALUES
+(1, 56042025, 2, '2024-03-06 01:30:11', 'present', NULL),
+(2, 56042025, 2, '2024-03-06 01:39:43', 'late', NULL),
+(3, 40412025, 2, '2024-03-06 17:28:37', 'present', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `attendancepin`
+--
+
+CREATE TABLE `attendancepin` (
+  `CourseID` int(11) NOT NULL,
+  `CurrentPin` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `attendancepin`
+--
+
+INSERT INTO `attendancepin` (`CourseID`, `CurrentPin`) VALUES
+(2, NULL),
+(5, NULL),
+(6, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `courses`
 --
 
 CREATE TABLE `courses` (
   `CourseID` int(11) NOT NULL,
+  `CourseCode` varchar(20) NOT NULL,
   `CourseName` varchar(255) NOT NULL,
   `FacultyID` int(11) DEFAULT NULL,
   `FacultyInternID` int(11) DEFAULT NULL,
   `CourseDescription` text DEFAULT NULL,
-  `ClassDays` varchar(255) DEFAULT NULL,
-  `ClassTimes` varchar(255) DEFAULT NULL,
-  `AttendancePin` varchar(10) DEFAULT NULL
+  `Cohort` varchar(1) NOT NULL COMMENT 'Alphabet (e.g., A, B, C)',
+  `Semester` varchar(9) NOT NULL COMMENT 'Academic year format (e.g., 2023/2024)',
+  `AcademicYear` int(11) NOT NULL,
+  `ClassDays` varchar(50) DEFAULT NULL COMMENT 'Comma-separated list of class days (e.g., Mon,Wed,Fri)',
+  `ClassTimes` varchar(50) DEFAULT NULL COMMENT 'Comma-separated list of class times (e.g., 09:00-10:30,14:00-15:30)',
+  `isAttendanceActive` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`CourseID`, `CourseCode`, `CourseName`, `FacultyID`, `FacultyInternID`, `CourseDescription`, `Cohort`, `Semester`, `AcademicYear`, `ClassDays`, `ClassTimes`, `isAttendanceActive`) VALUES
+(2, 'CS330', 'Hardware and Systems Fundamentals', 4, NULL, NULL, 'A', 'Spring', 2024, 'Tuesday, Thursday', '12:30 - 15:30', 0),
+(5, 'CS 331', 'Web Technologies', 4, NULL, NULL, 'A', 'Spring', 2024, 'Monday,Wednesday,Friday', '13:15 - 14:45,13:15 - 14:45,12:15 - 13:45', 0),
+(6, 'CS 412', 'Algorithm Design and Analysis', 4, NULL, NULL, 'A', 'Spring', 2024, 'Monday,Tuesday,Thursday', '08:00 - 09:30,13:15 - 14:45,13:15 - 14:45', 0);
 
 -- --------------------------------------------------------
 
@@ -76,7 +133,7 @@ CREATE TABLE `faculty` (
 
 INSERT INTO `faculty` (`FacultyID`, `DepartmentID`) VALUES
 (3, 1),
-(4, 2);
+(4, 4);
 
 -- --------------------------------------------------------
 
@@ -124,6 +181,14 @@ CREATE TABLE `studentcourses` (
   `CourseID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `studentcourses`
+--
+
+INSERT INTO `studentcourses` (`StudentID`, `CourseID`) VALUES
+(40412025, 2),
+(56042025, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -132,7 +197,7 @@ CREATE TABLE `studentcourses` (
 
 CREATE TABLE `students` (
   `StudentID` int(11) NOT NULL,
-  `Major` varchar(255) DEFAULT NULL,
+  `Major` int(11) NOT NULL,
   `YearGroup` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -141,9 +206,10 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`StudentID`, `Major`, `YearGroup`) VALUES
-(40412025, 'Computer Engineering', 2025),
-(56042025, 'Computer Science', 2025),
-(80322025, 'Mathematics', 2025);
+(40412025, 3, 2025),
+(56042025, 1, 2025),
+(80322025, 1, 2025),
+(90902024, 4, 2024);
 
 -- --------------------------------------------------------
 
@@ -166,14 +232,29 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`UserID`, `Name`, `Email`, `Password`, `UserType`) VALUES
 (1, 'Elikem Gale-Zoyiku', 'elikem.gale-zoyiku@ashesi.edu.gh', 'EATprof@2002', 'admin'),
 (3, 'Elikem Gale-Zoyiku', 'egalezoyiku@gmail.com', '$2y$10$cVs2Nq9.gPUeGZGQxtHDcutXjq.aC7sNHQoi.myKBSYLe.8DsxR.u', 'faculty'),
-(4, 'Elikem Duck', 'abc@elikem.info', '$2y$10$cKDyLZQ8Nexg9TKFt7vzHuUf1qR/hmAZYrJDuDCLoWrd9myNAGqjW', 'faculty'),
-(40412025, 'Emmanuel Soumahoro', 'emmanuel@example.com', 'emmanuel@example.com', 'student'),
-(56042025, 'Elikem Asudo Tsatsu Gale-Zoyiku', 'elikem@example.com', 'elikem@example.com', 'student'),
-(80322025, 'Cajetan SOngwae', 'cajetan@example.com', 'cajetan@example.com', 'student');
+(4, 'Elikem Faculty', 'abc@elikem.info', '$2y$10$cKDyLZQ8Nexg9TKFt7vzHuUf1qR/hmAZYrJDuDCLoWrd9myNAGqjW', 'faculty'),
+(40412025, 'Emmanuel Soumahoro', 'emmanuel@example.com', '$2y$10$CuYQG1WECTRQ8wsTh/OJOOmF81aFrEMZtdIKGFS7FdJb6TbuKEh9i', 'student'),
+(56042025, 'Elikem Asudo Tsatsu Gale-Zoyiku', 'elikem@example.com', '$2y$10$FqVT.Rz1.X..7dVWnXvIS.62m6anoH6eyJgU8n0l4SSwV7eMjd8b2', 'student'),
+(80322025, 'Cajetan Songwae', 'cajetan@example.com', '$2y$10$MfpRfbQsE5V67OQ8M7r1gOIXorWXTyz5wRhJGejvv1Dbkuzea7yxK', 'student'),
+(90902024, 'Sirius Black', 'sirius@example.com', '$2y$10$XpboBo2o0iJvCaWIe6KO2eHhVG94YqT.loZUgBTvlyX5pFY1ZyMam', 'student');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`AttendanceID`),
+  ADD KEY `StudentID` (`StudentID`),
+  ADD KEY `CourseID` (`CourseID`);
+
+--
+-- Indexes for table `attendancepin`
+--
+ALTER TABLE `attendancepin`
+  ADD PRIMARY KEY (`CourseID`);
 
 --
 -- Indexes for table `courses`
@@ -219,7 +300,8 @@ ALTER TABLE `studentcourses`
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`StudentID`);
+  ADD PRIMARY KEY (`StudentID`),
+  ADD KEY `Major` (`Major`);
 
 --
 -- Indexes for table `users`
@@ -233,10 +315,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `attendance`
+--
+ALTER TABLE `attendance`
+  MODIFY `AttendanceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `CourseID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CourseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -254,11 +342,24 @@ ALTER TABLE `majors`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80322026;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90902025;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `students` (`StudentID`),
+  ADD CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`CourseID`) REFERENCES `courses` (`CourseID`);
+
+--
+-- Constraints for table `attendancepin`
+--
+ALTER TABLE `attendancepin`
+  ADD CONSTRAINT `fk_course` FOREIGN KEY (`CourseID`) REFERENCES `courses` (`CourseID`);
 
 --
 -- Constraints for table `courses`
@@ -279,6 +380,12 @@ ALTER TABLE `faculty`
 ALTER TABLE `studentcourses`
   ADD CONSTRAINT `studentcourses_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `students` (`StudentID`),
   ADD CONSTRAINT `studentcourses_ibfk_2` FOREIGN KEY (`CourseID`) REFERENCES `courses` (`CourseID`);
+
+--
+-- Constraints for table `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`Major`) REFERENCES `majors` (`MajorID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

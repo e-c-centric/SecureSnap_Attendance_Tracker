@@ -214,7 +214,6 @@ include './../settings/core.php';
                 </div>
               </form>
 
-              <!--Loading spinner-->
               <div class="d-flex justify-content-center">
                 <div id="addLoading" role="status">
                 </div>

@@ -16,11 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
 
             $password = password_hash($email, PASSWORD_DEFAULT);
 
-            $user_insert_query = "INSERT INTO Users (UserID, Name, Email, Password, UserType)
+            $user_insert_query = "INSERT IGNORE INTO Users (UserID, Name, Email, Password, UserType)
                                   VALUES ('$student_id', '$name', '$email', '$password', 'student')";
             mysqli_query($conn, $user_insert_query);
 
-            $student_insert_query = "INSERT INTO Students (StudentID, Major, YearGroup)
+            $student_insert_query = "INSERT IGNORE INTO Students (StudentID, Major, YearGroup)
                                      VALUES ('$student_id', '$major', '$year_group')";
             mysqli_query($conn, $student_insert_query);
         }
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
         fclose($handle);
     }
 
-    echo "Data inserted successfully.";
+    echo "success";
 } else {
     echo "Error: Invalid request.";
 }

@@ -11,23 +11,14 @@ $courseID = $_GET['courseID'];
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <!--CDN Bootstrap and Jquery-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="../js/bootstrap.min.js"></script> -->
 
-    <!--Font awesome for icons-->
     <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-    <!--Sweet alert-->
     <script src="../js/sweetalert.min.js"></script>
 
-    <!--Custom js and spinner-->
-    <script type="text/javascript" src="../js/loader.js"></script>
-    <script type="text/javascript" src="../js/jsfunctions.js"></script>
-
-    <!--Custom CSS-->
     <style type="text/css" media="screen">
         a:link {
             color: black;
@@ -129,6 +120,9 @@ $courseID = $_GET['courseID'];
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#pastview" id="pastView"><span class="fa fa-eye"></span> Past Schedule</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./../admin/enrol_students_in_course.php?courseID=<?php echo $courseID; ?>"><span class="fa fa-eye"></span>Register Students In Course</a>
+            </li>
         </ul>
 
         <!-- Tab pane -->
@@ -148,14 +142,6 @@ $courseID = $_GET['courseID'];
             <div class="container tab-pane fade" id="pastview">
                 <br>
 
-                <div class="text-center">Total Statistics
-                    <p>
-                        <span>Total - </span><span id="totalStats" class="badge badge-pill badge-primary">...</span>
-                        <span>Present - </span><span id="presentStats" class="badge badge-pill badge-success">...</span>
-                        <span>Late - </span><span id="lateStats" class="badge badge-pill badge-warning">...</span>
-                        <span>Absent - </span><span id="absentStats" class="badge badge-pill badge-danger">...</span>
-                    </p>
-                </div>
 
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -254,7 +240,7 @@ $courseID = $_GET['courseID'];
                 url: './../actions/get_upcoming_schedules.php?courseID=' + course_id,
                 type: 'GET',
                 success: function(data) {
-                    var parsedData = JSON.parse(data)[0];
+                    var parsedData = JSON.parse(data);
                     if (parsedData.success) {
                         var day = parsedData.day;
                         var time = parsedData.time;
@@ -279,33 +265,18 @@ $courseID = $_GET['courseID'];
                 url: './../actions/get_attendance_records_by_course.php?courseID=' + course_id,
                 type: 'GET',
                 success: function(data) {
-                    var parsedData = JSON.parse(data);
-                    var attendanceRecords = parsedData.attendanceRecords;
-
-                    var students = {};
-                    for (var i = 0; i < attendanceRecords.length; i++) {
-                        var record = attendanceRecords[i];
-                        if (!students[record.StudentID]) {
-                            students[record.StudentID] = {};
-                        }
-                        students[record.StudentID][record.AttendanceDateTime] = record.Status;
-                    }
-
-                    var tableHeader = "<tr><th>Student ID</th>";
-                    var dates = Object.keys(students[Object.keys(students)[0]]);
-                    for (var i = 0; i < dates.length; i++) {
-                        tableHeader += "<th>" + dates[i] + "</th>";
-                    }
+                    var cop = JSON.parse(data);
+                    var tableHeader = "<tr><th>Students Enrolled</th>";
                     tableHeader += "</tr>";
 
                     var tableBody = "";
-                    for (var studentID in students) {
-                        tableBody += "<tr><td>" + studentID + "</td>";
-                        for (var i = 0; i < dates.length; i++) {
-                            tableBody += "<td>" + (students[studentID][dates[i]] || 'Absent') + "</td>";
-                        }
+                    for (var i = 0; i < cop.length; i++) {
+                        var id = cop[i].UserID;
+                        var name = cop[i].Name;
+                        tableBody += "<tr><td><a href = './../views/course_student_attendance_view.php?courseID=" + course_id + "&studentID=" + id + "'>" + name + "</a></td>";
                         tableBody += "</tr>";
                     }
+
 
                     document.getElementById('tableheader').innerHTML = tableHeader;
                     document.getElementById('attendanceTableBody').innerHTML = tableBody;

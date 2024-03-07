@@ -1,8 +1,7 @@
 <?php
 
-//$courseID = $_GET['courseID'];
+$courseID = $_GET['courseID'];
 
-$courseID = 5;
 
 include './../settings/config.php';
 include './../settings/core.php';
@@ -10,9 +9,9 @@ include './../functions/time_funx.php';
 
 
 
-$today = Weekday();
-$currentHour = Hour();
-$currentMinute = Minute();
+$today = "Tuesday";
+$currentHour = 12;
+$currentMinute = 40;
 
 
 $days = array();
@@ -59,6 +58,6 @@ if ($dayIndex === false) {
         );
         echo json_encode($upcomingSchedules);
     } else {
-        echo json_encode(array("success" => false, "message" => "No upcoming schedules."));
+        echo json_encode(array("success" => false, "message" => "No upcoming schedules.","time"=>$timeperiods[$dayIndex],"day"=>$today,"current"=>$currentTimeInMinutes,"start"=>$startTimeInMinutes,"diff"=>($currentTimeInMinutes - $startTimeInMinutes),"courseID"=>$courseID,"query"=>$query));
     }
 }

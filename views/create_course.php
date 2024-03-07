@@ -1,3 +1,8 @@
+<?php
+include './../settings/core.php';
+if (!is_logged_in()) {
+    header('Location: ./../login/login.php');
+} ?>
 <!DOCTYPE html>
 <html>
 
@@ -7,22 +12,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <!--CDN Bootstrap and Jquery-->
+    
     <script type="text/javascript" src="./../js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="./../css/bootstrap.min.css">
     <script src="./../js/bootstrap.min.js"></script>
 
-    <!--Font awesome for icons-->
+    
     <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-    <!--Sweet alert-->
+    
     <script src="../js/sweetalert.min.js"></script>
 
-    <!--Custom js and spinner-->
+    
     <script type="text/javascript" src="../js/jsfunctions.js"></script>
     <script type="text/javascript" src="../js/loader.js"></script>
 
-    <!--Custom CSS-->
+    
     <style type="text/css" media="screen">
         a:link {
             color: black;
@@ -84,20 +89,20 @@
 
 <body>
 
-    <!--Core and setting-->
+    
 
-    <!--Top Navigation-->
-    <!-- get active page from the main page calling the header -->
+    
+    
 
-    <!--Top Navigation-->
+    
     <?php include 'head.php'; ?>
-    <!--Main Body Content-->
+    
 
     <div class="container mt-1">
 
         <div class="jumbotron">
 
-            <!--Action Buttons-->
+            
             <div class="text-center"><br>
                 <button class="btn btn-secondary" data-toggle="modal" data-target="#createcourse" id="createItem"><span class="fas fa-file"></span>Manually Enter Course Information</button>
                 <a href=""><button class="btn btn-secondary"><span class="fas fa-upload"></span>Create Courses By Uploading A CSV File</button></a>
@@ -109,20 +114,20 @@
 
 
 
-    <!-- The edit user Modal -->
+    
     <div class="modal fade" id="createcourse">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
-                <!-- Modal Header -->
+                
                 <div class="modal-header">
                     <h4 class="modal-title">Create A New Course</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <!-- Update Modal body -->
+                
                 <div class="modal-body">
-                    <!--Update Form-->
+                    
                     <div>
                         <form action="">
 
@@ -180,22 +185,7 @@
                                     <input type="text" id="FridayTime" name="FridayTime" placeholder="Enter class time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9] - ([01]?[0-9]|2[0-3]):[0-5][0-9]"><br>
                                 </div>
                             </div>
-                            <!-- 
-                            <div class="alert alert-danger fade collapse" id="course_name_error">
-                                Invalid course name.
-                            </div>
-                            <div class="alert alert-danger fade collapse" id="course_description_error">
-                                Invalid course description.
-                            </div>
-                            <div class="alert alert-danger fade collapse" id="course_time_error">
-                                Invalid course time - use 24 hour format: e.g. 12:30 - 13:30
-                            </div>
-                            <div class="alert alert-danger fade collapse" id="course_partial_error">
-                                <strong>Partial Update!</strong> Some parts of the course could not be updated. Try again later
-                            </div>
-                            <div class="alert alert-danger fade collapse" id="course_update_fail">
-                                <strong>Failed!</strong> Course update failed.
-                            </div> -->
+                            
                             <div class="form-group">
                                 <button type="button" class="btn btn-block btn-success" id="createbutton" onclick="createCourse()"><span class="fa fa-check-circle"></span> Create Course</button>
                             </div>
@@ -209,7 +199,7 @@
                     </div>
                 </div>
 
-                <!-- Modal footer -->
+                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
@@ -217,7 +207,7 @@
             </div>
         </div>
     </div>
-    <!--End edit user Modal-->
+    
     <br><br>
 
     <script>

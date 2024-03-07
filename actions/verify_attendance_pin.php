@@ -1,8 +1,12 @@
 <?php
 
-$pin = $_GET['pin'];
-$courseID = $_GET['courseID'];
-$times = $_GET['times'];
+$pin = $_POST['pin'];
+$courseID = $_POST['courseID'];
+$times = $_POST['times'];
+$imageData = $_POST['image'];
+
+$imageData = str_replace('data:image/png;base64,', '', $imageData);
+$imageData = base64_decode($imageData);
 
 
 
@@ -49,14 +53,16 @@ $todays_date_time = (string)$todays_date_time;
 
 $result_1 = mysqli_query($conn, $query_1);
 
-//if result1 returns more than one row, get the pin in the system and compare the one from the GET request
-
 if (mysqli_num_rows($result_1) > 0) {
     $row = mysqli_fetch_assoc($result_1);
     $pinInSystem = $row['CurrentPin'];
     if ($pinInSystem == $pin) {
-        $query_2 = "INSERT INTO attendance (AttendanceDateTime, StudentID, Status, courseID) VALUES ('$todays_date_time', '$userID', '$present_state', '$courseID')";
-        $result_2 = mysqli_query($conn, $query_2);
+        $query_2 = "INSERT INTO attendance (AttendanceDateTime, StudentID, Status, courseID, Picture) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query_2);
+        $null = NULL;
+        $stmt->bind_param("sisib", $todays_date_time, $userID, $present_state, $courseID, $null);
+        $stmt->send_long_data(4, $imageData);
+        $result_2 = $stmt->execute();
         if ($result_2) {
             echo "success";
         } else {
@@ -66,7 +72,5 @@ if (mysqli_num_rows($result_1) > 0) {
         echo "wrong pin";
     }
 } else {
-    echo "pin not set";
+    echo "no pin set for this course yet. Please contact your instructor.";
 }
-
-?>

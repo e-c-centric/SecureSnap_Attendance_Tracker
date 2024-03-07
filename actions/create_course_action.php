@@ -8,7 +8,6 @@ if (!is_post_request()) {
     exit();
 }
 if (!is_logged_in()) {
-    session_destroy();
     header('Location: ./../index.php');
 }
 $response = "";
@@ -27,13 +26,16 @@ if ($userRole === 'faculty') {
     $classTimes = implode(",", $_POST['classTimes']);
     $facultyID = $userID;
 
-    $sql = "INSERT INTO courses (CourseCode, CourseName, FacultyID, Cohort, Semester, AcademicYear, ClassDays, ClassTimes) 
+    $sql = "INSERT IGNORE INTO courses (CourseCode, CourseName, FacultyID, Cohort, Semester, AcademicYear, ClassDays, ClassTimes) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $sql_2 = "INSERT IGNORE INTO attendancepin (CourseCode) VALUES (?)";
 
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("ssississ", $courseCode, $courseName, $facultyID, $cohort, $semester, $academicYear, $classDays, $classTimes);
 
         if ($stmt->execute()) {
+            mysqli_query($conn, $sql_2);
             echo "success";
             exit();
         } else {

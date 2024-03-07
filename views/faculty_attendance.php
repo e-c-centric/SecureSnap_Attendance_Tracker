@@ -1,7 +1,10 @@
 <?php
+include './../settings/core.php';
+if (!is_logged_in()) {
+    header('Location: ./../login/login.php');
+}
 $courseID = $_GET['courseID'];
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -94,17 +97,9 @@ $courseID = $_GET['courseID'];
 </head>
 
 <body>
-
-    <!--Core and setting-->
-
-    <!--Top Navigation-->
-    <!-- get active page from the main page calling the header -->
-
-    <!--Top Navigation-->
     <?php
     include 'head.php';
     ?>
-    <!--Main Body Content-->
 
     <div class="container mt-1">
 
@@ -112,7 +107,7 @@ $courseID = $_GET['courseID'];
             loading</h2>
         <br>
 
-        <!-- Nav tabs -->
+        
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#upview"><span class="fa fa-eye"></span> Upcoming Schedule</a>
@@ -125,10 +120,10 @@ $courseID = $_GET['courseID'];
             </li>
         </ul>
 
-        <!-- Tab pane -->
+        
         <div class="tab-content">
 
-            <!-- upcoming pane -->
+            
             <div class="container tab-pane active" id="upview"><br>
 
 
@@ -138,7 +133,7 @@ $courseID = $_GET['courseID'];
 
             </div>
 
-            <!-- past pane -->
+            
             <div class="container tab-pane fade" id="pastview">
                 <br>
 
@@ -156,18 +151,18 @@ $courseID = $_GET['courseID'];
         </div>
 
 
-        <!-- The add Modal -->
+        
         <div class="modal fade" id="setPinModal">
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <!-- Modal Header -->
+                    
                     <div class="modal-header">
                         <h4 class="modal-title">Set Attendance PIN</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
-                    <!--Add Error Messages-->
+                    
                     <div class="alert alert-danger fade collapse" id="pin_empty">
                         PIN cannot be empty
                     </div>
@@ -175,9 +170,9 @@ $courseID = $_GET['courseID'];
                         <strong>Failed!</strong> PIN must be 4 numbers.
                     </div>
 
-                    <!-- Modal body -->
+                    
                     <div class="modal-body">
-                        <!--Set PIN Form-->
+                        
                         <div>
                             <form action="">
 
@@ -198,7 +193,7 @@ $courseID = $_GET['courseID'];
                         </div>
                     </div>
 
-                    <!-- Modal footer -->
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
@@ -206,7 +201,7 @@ $courseID = $_GET['courseID'];
                 </div>
             </div>
         </div>
-        <!--End set PIN Modal-->
+        
 
 
     </div>
@@ -280,9 +275,6 @@ $courseID = $_GET['courseID'];
 
                     document.getElementById('tableheader').innerHTML = tableHeader;
                     document.getElementById('attendanceTableBody').innerHTML = tableBody;
-
-                    // document.getElementById('totalClasses').innerHTML = parsedData.totalClasses;
-                    // document.getElementById('totalStudents').innerHTML = parsedData.totalStudents;
                 },
                 error: function() {
                     alert("Error fetching data.");
@@ -327,7 +319,7 @@ $courseID = $_GET['courseID'];
                                     console.log("Error unsetting PIN.");
                                 }
                             });
-                        }, 0.5 * 60 * 1000);
+                        }, 15 * 60 * 1000);
                     } else {
                         swal("Failed to set PIN", {
                             icon: "error",

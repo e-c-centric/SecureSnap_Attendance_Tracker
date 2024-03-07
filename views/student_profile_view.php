@@ -1,3 +1,9 @@
+<?php
+include './../settings/core.php';
+if (!is_logged_in()) {
+  header('Location: ./../login/login.php');
+} ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -7,21 +13,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-  <!--CDN Bootstrap and Jquery-->
+  
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
-  <!--Font awesome for icons-->
+  
   <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-  <!--Sweet alert-->
+  
   <script src="../js/sweetalert.min.js"></script>
 
-  <!--Custom js and spinner-->
+  
   <script type="text/javascript" src="../js/jsfunctions.js"></script>
 
-  <!--Custom CSS-->
+  
   <style type="text/css" media="screen">
     a:link {
       color: black;
@@ -83,14 +89,14 @@
 
 <body>
 
-  <!--Core and setting-->
+  
 
-  <!--Top Navigation-->
-  <!-- get active page from the main page calling the header -->
+  
+  
 
-  <!--Top Navigation-->
+  
   <?php include 'head.php'; ?>
-  <!--Main Body Content-->
+  
 
   <div class="container mt-1">
 
@@ -122,27 +128,27 @@
         </table>
       </div>
 
-      <!--Action Buttons-->
+      
       <div class="text-center"><br>
         <button class="btn btn-secondary" data-toggle="modal" data-target="#editaUser" id="editProfile"><span class="fas fa-upload"></span> Edit Profile</button>
       </div>
     </div>
 
 
-    <!-- The edit user Modal -->
+    
     <div class="modal fade" id="editaUser">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-          <!-- Modal Header -->
+          
           <div class="modal-header">
             <h4 class="modal-title">Update Account</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
-          <!-- Update Modal body -->
+          
           <div class="modal-body">
-            <!--Update Form-->
+            
             <div>
               <form action="">
 
@@ -193,7 +199,7 @@
                 </div>
               </form>
 
-              <!--Loading spinner-->
+              
               <div class="d-flex justify-content-center">
                 <div id="updateLoading" role="status">
                 </div>
@@ -202,7 +208,7 @@
             </div>
           </div>
 
-          <!-- Modal footer -->
+          
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
@@ -210,7 +216,7 @@
         </div>
       </div>
     </div>
-    <!--End edit user Modal-->
+    
     <br><br>
 
 

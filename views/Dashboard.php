@@ -4,6 +4,10 @@ include_once './../settings/core.php';
 if (!is_logged_in()) {
   header('Location: ./../index.php');
 }
+
+if ($_SESSION['UserRole'] === 'admin') {
+  header('Location: ./admin_dashboard.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +19,17 @@ if (!is_logged_in()) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Dashboard">
 
-  <!-- boxicon -->
   <link href="./../css/boxicons.min.css" rel="stylesheet">
 
-  <!--CDN Bootstrap and Jquery-->
+  
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script type="text/javascript" src="./../js/jquery-3.4.1.min.js"></script>
   <script src="./../js/bootstrap.min.js"></script>
 
-  <!--Font awesome for icons-->
+  
   <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-  <!--Custom CSS-->
+  
   <style type="text/css" media="screen">
     a:link {
       color: white;
@@ -133,18 +136,18 @@ if (!is_logged_in()) {
 
 <body>
 
-  <!--Core and setting-->
+  
 
-  <!--Top Navigation-->
-  <!-- get active page from the main page calling the header -->
+  
+  
 
-  <!--Top Navigation-->
+  
   <?php
   include 'head.php';
   ?>
 
 
-  <!--Main Body Content-->
+  
   <div class="container">
     <div class="row">
 

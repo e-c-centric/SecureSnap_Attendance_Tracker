@@ -5,6 +5,7 @@ include './../settings/core.php';
 include './../settings/functions.php';
 
 if (!is_logged_in()) {
+    header('Location: ./../login/login.php');
     exit();
 }
 

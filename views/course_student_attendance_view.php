@@ -3,7 +3,11 @@ $courseID = $_GET['courseID'];
 $studentID = $_GET['studentID'];
 include './../settings/config.php';
 include './../settings/core.php';
+if (!is_logged_in()) {
+    header('Location: ./../login/login.php');
+}
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,23 +18,21 @@ include './../settings/core.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <!--CDN Bootstrap and Jquery-->
+    
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="../js/bootstrap.min.js"></script> -->
+    
 
-    <!--Font awesome for icons-->
+    
     <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-    <!--Sweet alert-->
+    
     <script src="../js/sweetalert.min.js"></script>
 
-    <!--Custom js and spinner-->
-    <script type="text/javascript" src="../js/loader.js"></script>
-    <script type="text/javascript" src="../js/jsfunctions.js"></script>
-
-    <!--Custom CSS-->
+    
+    
+    
     <style type="text/css" media="screen">
         a:link {
             color: black;
@@ -107,16 +109,16 @@ include './../settings/core.php';
 
 <body>
 
-    <!--Core and setting-->
+    
 
-    <!--Top Navigation-->
-    <!-- get active page from the main page calling the header -->
+    
+    
 
-    <!--Top Navigation-->
+    
     <?php
     include 'head.php';
     ?>
-    <!--Main Body Content-->
+    
 
     <div class="container mt-1">
 
@@ -124,16 +126,16 @@ include './../settings/core.php';
             loading</h2>
         <br>
 
-        <!-- Nav tabs -->
+        
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#pastview" id="pastView"><span class="fa fa-eye"></span>Attendance Records</a>
             </li>
         </ul>
 
-        <!-- Tab pane -->
+        
         <div class="tab-content">
-            <!-- past pane -->
+            
             <div class="container tab-pane active" id="pastview">
                 <br>
 

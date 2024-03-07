@@ -2,6 +2,9 @@
 $courseID = $_GET['courseID'];
 include './../settings/config.php';
 include './../settings/core.php';
+if (!is_logged_in()) {
+  header('Location: ./../login/login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,23 +16,18 @@ include './../settings/core.php';
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-  <!--CDN Bootstrap and Jquery-->
+
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
-  <!-- <script src="../js/bootstrap.min.js"></script> -->
 
-  <!--Font awesome for icons-->
+
+
   <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-  <!--Sweet alert-->
+
   <script src="../js/sweetalert.min.js"></script>
 
-  <!--Custom js and spinner-->
-  <script type="text/javascript" src="../js/loader.js"></script>
-  <script type="text/javascript" src="../js/jsfunctions.js"></script>
-
-  <!--Custom CSS-->
   <style type="text/css" media="screen">
     a:link {
       color: black;
@@ -106,16 +104,16 @@ include './../settings/core.php';
 
 <body>
 
-  <!--Core and setting-->
 
-  <!--Top Navigation-->
-  <!-- get active page from the main page calling the header -->
 
-  <!--Top Navigation-->
+
+
+
+
   <?php
   include 'head.php';
   ?>
-  <!--Main Body Content-->
+
 
   <div class="container mt-1">
 
@@ -123,7 +121,7 @@ include './../settings/core.php';
       loading</h2>
     <br>
 
-    <!-- Nav tabs -->
+
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" data-toggle="tab" href="#upview"><span class="fa fa-eye"></span> Upcoming Schedule</a>
@@ -133,10 +131,10 @@ include './../settings/core.php';
       </li>
     </ul>
 
-    <!-- Tab pane -->
+
     <div class="tab-content">
 
-      <!-- upcoming pane -->
+
       <div class="container tab-pane active" id="upview"><br>
 
         <small class="text-muted">Only take your attendance under the following circumstances:
@@ -152,7 +150,7 @@ include './../settings/core.php';
 
       </div>
 
-      <!-- past pane -->
+
       <div class="container tab-pane fade" id="pastview">
         <br>
 
@@ -172,18 +170,18 @@ include './../settings/core.php';
     </div>
 
 
-    <!-- The add Modal -->
+
     <div class="modal fade" id="addModal">
       <div class="modal-dialog">
         <div class="modal-content">
 
-          <!-- Modal Header -->
+
           <div class="modal-header">
             <h4 class="modal-title">Verify Attendace By PIN</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
-          <!--Add Error Messages-->
+
           <div class="alert alert-danger fade collapse" id="pin_empty">
             PIN failed. Try again.
           </div>
@@ -194,9 +192,9 @@ include './../settings/core.php';
             <strong>Failed!</strong> Try again later.
           </div>
 
-          <!-- Modal body -->
+
           <div class="modal-body">
-            <!--Register Form-->
+
             <div>
               <form action="">
 
@@ -207,7 +205,8 @@ include './../settings/core.php';
                 <div class="form-group">
                   <input type="password" class="form-control" placeholder="attendance pin" id="apin" required="required" maxlength="4">
                 </div>
-
+                <video id="video" width="350" height="350" autoplay></video>
+                <canvas id="canvas" width="350" height="350"></canvas>
                 <div class="form-group">
                   <button type="submit" class="btn btn-block btn-success" id="addbutton" onclick="verifyPin(event)"><i class="fa fa-user-plus"></i> Confirm Attendance</button>
                 </div>
@@ -221,7 +220,7 @@ include './../settings/core.php';
             </div>
           </div>
 
-          <!-- Modal footer -->
+
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
@@ -229,7 +228,7 @@ include './../settings/core.php';
         </div>
       </div>
     </div>
-    <!--End add Modal-->
+
 
 
 
@@ -263,7 +262,7 @@ include './../settings/core.php';
         url: './../actions/get_upcoming_schedules.php?courseID=' + course_id,
         type: 'GET',
         success: function(data) {
-          var parsedData = JSON.parse(data);
+          var parsedData = JSON.parse(data)[0];
           if (parsedData.success) {
             var day = parsedData.day;
             var time = parsedData.time;
@@ -337,28 +336,59 @@ include './../settings/core.php';
           document.getElementById('pin_empty').classList.add('collapse');
         }, 3000);
       } else {
-        $.ajax({
-          url: './../actions/verify_attendance_pin.php?courseID=' + course_id + '&pin=' + pin + '&times=' + document.getElementById('times').innerText,
-          type: 'GET',
-          success: function(data) {
-            if (data == "success") {
-              swal("Success!", "Attendance verified", "success");
-              document.getElementById('apin').value = "";
-              $('#addModal').modal('hide');
-            } else {
-              document.getElementById('pin_invalid').classList.remove('collapse');
-              setTimeout(function() {
-                document.getElementById('pin_invalid').classList.add('collapse');
-              }, 3000);
+        var video = document.getElementById('video');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+        navigator.mediaDevices.getUserMedia({
+            video: {
+              facingMode: "user"
             }
-          },
-          error: function() {
-            document.getElementById('pin_failed').classList.remove('collapse');
+          })
+          .then(function(stream) {
+            video.srcObject = stream;
             setTimeout(function() {
-              document.getElementById('pin_failed').classList.add('collapse');
-            }, 3000);
-          }
-        });
+              context.drawImage(video, 0, 0, 640, 480);
+              var dataUrl = canvas.toDataURL('image/png');
+
+              var tracks = stream.getTracks();
+              tracks.forEach(function(track) {
+                track.stop();
+              });
+
+              $.ajax({
+                url: './../actions/verify_attendance_pin.php',
+                type: 'POST',
+                data: {
+                  image: dataUrl,
+                  pin: pin,
+                  courseID: course_id,
+                  times: document.getElementById('times').innerText
+                },
+                success: function(data) {
+                  if (data == "success") {
+                    swal("Success!", "Attendance verified", "success");
+                    document.getElementById('apin').value = "";
+                    $('#addModal').modal('hide');
+                  } else {
+                    document.getElementById('pin_invalid').classList.remove('collapse');
+                    setTimeout(function() {
+                      document.getElementById('pin_invalid').classList.add('collapse');
+                    }, 3000);
+                  }
+                },
+                error: function() {
+                  document.getElementById('pin_failed').classList.remove('collapse');
+                  setTimeout(function() {
+                    document.getElementById('pin_failed').classList.add('collapse');
+                  }, 3000);
+                }
+              });
+            }, 5000);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
       }
     }
   </script>

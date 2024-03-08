@@ -19,7 +19,6 @@
     <script src="../js/sweetalert.min.js"></script>
 
     
-    <script type="text/javascript" src="../js/jsfunctions.js"></script>
 
     
     <style type="text/css" media="screen">

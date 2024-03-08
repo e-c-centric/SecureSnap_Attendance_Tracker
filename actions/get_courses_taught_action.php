@@ -16,9 +16,5 @@ if ($userRole === 'faculty') {
         while ($row = $result->fetch_assoc()) {
             $coursesTaught[] = $row;
         }
-    } else {
-        echo "No courses taught.";
-    }
-} else {
-    echo "You are not authorized to view courses taught";
+    } 
 }

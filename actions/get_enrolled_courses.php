@@ -25,6 +25,4 @@ if ($result->num_rows > 0) {
             $enrolledCourses[] = $row;
         }
     }
-} else {
-    echo "Student ID not found for the given UserID.";
 }

@@ -176,7 +176,7 @@ if ($_SESSION['UserRole'] === 'admin') {
           echo "</div>";
           echo "</div>";
         }
-      } else {
+      } else if ($_SESSION['UserRole'] === 'faculty') {
 
         echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
         echo "<div class='card h-100' style='background-color:#5F9EA0'>";

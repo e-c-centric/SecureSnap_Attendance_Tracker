@@ -376,6 +376,7 @@ if (!is_logged_in()) {
                       document.getElementById('pin_invalid').classList.add('collapse');
                     }, 3000);
                   }
+                  document.getElementById("upSchedules").innerHTML 
                 },
                 error: function() {
                   document.getElementById('pin_failed').classList.remove('collapse');

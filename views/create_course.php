@@ -12,22 +12,20 @@ if (!is_logged_in()) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    
+
     <script type="text/javascript" src="./../js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="./../css/bootstrap.min.css">
     <script src="./../js/bootstrap.min.js"></script>
 
-    
+
     <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-    
+
     <script src="../js/sweetalert.min.js"></script>
 
-    
-    <script type="text/javascript" src="../js/jsfunctions.js"></script>
-    <script type="text/javascript" src="../js/loader.js"></script>
 
-    
+
+
     <style type="text/css" media="screen">
         a:link {
             color: black;
@@ -89,23 +87,22 @@ if (!is_logged_in()) {
 
 <body>
 
-    
 
-    
-    
 
-    
+
+
+
+
     <?php include 'head.php'; ?>
-    
+
 
     <div class="container mt-1">
 
         <div class="jumbotron">
 
-            
+
             <div class="text-center"><br>
                 <button class="btn btn-secondary" data-toggle="modal" data-target="#createcourse" id="createItem"><span class="fas fa-file"></span>Manually Enter Course Information</button>
-                <a href=""><button class="btn btn-secondary"><span class="fas fa-upload"></span>Create Courses By Uploading A CSV File</button></a>
             </div>
         </div>
     </div>
@@ -114,20 +111,20 @@ if (!is_logged_in()) {
 
 
 
-    
+
     <div class="modal fade" id="createcourse">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
-                
+
                 <div class="modal-header">
                     <h4 class="modal-title">Create A New Course</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                
+
                 <div class="modal-body">
-                    
+
                     <div>
                         <form action="">
 
@@ -185,7 +182,7 @@ if (!is_logged_in()) {
                                     <input type="text" id="FridayTime" name="FridayTime" placeholder="Enter class time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9] - ([01]?[0-9]|2[0-3]):[0-5][0-9]"><br>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <button type="button" class="btn btn-block btn-success" id="createbutton" onclick="createCourse()"><span class="fa fa-check-circle"></span> Create Course</button>
                             </div>
@@ -199,7 +196,7 @@ if (!is_logged_in()) {
                     </div>
                 </div>
 
-                
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
@@ -207,7 +204,7 @@ if (!is_logged_in()) {
             </div>
         </div>
     </div>
-    
+
     <br><br>
 
     <script>

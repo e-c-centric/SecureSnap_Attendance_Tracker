@@ -12,28 +12,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO Users (Name, Email, Password, UserType) VALUES (?, ?, ?, 'faculty')");
+    $stmt = $conn->prepare("INSERT IGNORE INTO Users (Name, Email, Password, UserType) VALUES (?, ?, ?, 'faculty')");
     $stmt->bind_param("sss", $name, $email, $hashedPassword);
 
     if ($stmt->execute()) {
         $userID = $conn->insert_id;
-        $stmtFaculty = $conn->prepare("INSERT INTO Faculty (FacultyID, DepartmentID) VALUES (?, ?)");
+        $stmtFaculty = $conn->prepare("INSERT IGNORE INTO Faculty (FacultyID, DepartmentID) VALUES (?, ?)");
         $stmtFaculty->bind_param("ii", $userID, $departmentID);
 
         if ($stmtFaculty->execute()) {
-            header("Location: ./../login/login.php");
+            echo json_encode(array("status" => true, "message" => "Faculty registered successfully."));
         } else {
-            echo "Error: " . $stmtFaculty->error;
+            echo json_encode(array("status" => false, "message" => "Error: " . $stmtFaculty->error));
         }
     } else {
-        echo "Error: " . $stmt->error;
+        echo json_encode(array("status" => false, "message" => "Error: " . $stmt->error));
     }
 
     $stmt->close();
     $stmtFaculty->close();
 } else {
-    header("Location: register_faculty_view.php");
+    echo json_encode(array("status" => false, "message" => "Invalid request."));
 }
 
 $conn->close();
-?>

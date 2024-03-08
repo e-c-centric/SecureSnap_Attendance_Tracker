@@ -8,7 +8,7 @@
       <ul class="navbar-nav">
 
         <li class="nav-item active">
-          <a class="nav-link" href="Dashboard.php">
+          <a class="nav-link" href="./../views/Dashboard.php">
             <span>| </span>
             <span class="fas fa-industry"></span>
             <span>Dashboard</span>
@@ -16,7 +16,7 @@
         </li>
 
         <li class="nav-item ">
-          <a class="nav-link" href="Profile.php">
+          <a class="nav-link" href="./../views/Profile.php">
             <span>| </span>
             <span class="fas fa-edit"></span>
             <span>Profile</span>

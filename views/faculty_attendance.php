@@ -107,7 +107,7 @@ $courseID = $_GET['courseID'];
             loading</h2>
         <br>
 
-        
+
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#upview"><span class="fa fa-eye"></span> Upcoming Schedule</a>
@@ -120,10 +120,10 @@ $courseID = $_GET['courseID'];
             </li>
         </ul>
 
-        
+
         <div class="tab-content">
 
-            
+
             <div class="container tab-pane active" id="upview"><br>
 
 
@@ -133,7 +133,7 @@ $courseID = $_GET['courseID'];
 
             </div>
 
-            
+
             <div class="container tab-pane fade" id="pastview">
                 <br>
 
@@ -151,18 +151,18 @@ $courseID = $_GET['courseID'];
         </div>
 
 
-        
+
         <div class="modal fade" id="setPinModal">
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    
+
                     <div class="modal-header">
                         <h4 class="modal-title">Set Attendance PIN</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
-                    
+
                     <div class="alert alert-danger fade collapse" id="pin_empty">
                         PIN cannot be empty
                     </div>
@@ -170,9 +170,9 @@ $courseID = $_GET['courseID'];
                         <strong>Failed!</strong> PIN must be 4 numbers.
                     </div>
 
-                    
+
                     <div class="modal-body">
-                        
+
                         <div>
                             <form action="">
 
@@ -193,7 +193,7 @@ $courseID = $_GET['courseID'];
                         </div>
                     </div>
 
-                    
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
@@ -201,14 +201,14 @@ $courseID = $_GET['courseID'];
                 </div>
             </div>
         </div>
-        
+
 
 
     </div>
     <script>
         var courseID = <?php echo $courseID; ?>;
 
-        window.onload = function() {
+        document.addEventListener('DOMContentLoaded', function() {
             var course_id = courseID;
             $.ajax({
                 url: './../actions/get_course_details.php?course_id=' + course_id,
@@ -217,7 +217,7 @@ $courseID = $_GET['courseID'];
                     var parsedData = JSON.parse(data);
                     var courseCode = parsedData[0].CourseCode;
                     var courseName = parsedData[0].CourseName;
-                    document.getElementById('courseName').innerText = courseCode + ": " + courseName + " Attendance Tracking: ";
+                    document.getElementById('courseName').innerText = courseCode + ": " + courseName + " Attendance Tracking";
 
                 },
 
@@ -227,7 +227,7 @@ $courseID = $_GET['courseID'];
 
             });
             upcomingSchedules();
-        }
+        });
 
         function upcomingSchedules() {
             var course_id = courseID;
@@ -235,7 +235,7 @@ $courseID = $_GET['courseID'];
                 url: './../actions/get_upcoming_schedules.php?courseID=' + course_id,
                 type: 'GET',
                 success: function(data) {
-                    var parsedData = JSON.parse(data);
+                    var parsedData = JSON.parse(data)[0];
                     if (parsedData.success) {
                         var day = parsedData.day;
                         var time = parsedData.time;

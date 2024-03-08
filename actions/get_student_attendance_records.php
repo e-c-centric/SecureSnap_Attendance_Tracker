@@ -33,8 +33,7 @@ if (isset($_GET['course_id']) && isset($_GET['student_id'])) {
                 'StudentID' => $row['StudentID'],
                 'StudentName' => $row['StudentName'],
                 'AttendanceDateTime' => $row['AttendanceDateTime'],
-                'Status' => $row['Status'],
-                'Picture' => $row['Picture']
+                'Status' => $row['Status']
             );
         }
     }

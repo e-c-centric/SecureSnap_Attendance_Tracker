@@ -132,7 +132,7 @@ if (!is_logged_in()) {
                 <a class="nav-link active" data-toggle="tab" href="#pastview" id="pastView"><span class="fa fa-eye"></span>Attendance Records</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#recentimage" id="recentImage"><span class="fa fa-image"></span>Recent Images</a>
+                <a class="nav-link" data-toggle="tab" href="#recentimage" id="recentimagescreen"><span class="fa fa-image"></span>Recent Images</a>
             </li>
         </ul>
 
@@ -244,29 +244,40 @@ if (!is_logged_in()) {
                 });
             }
 
-            document.addEventListener('recentImage', function() {
-                var imageSection = document.getElementById('recentimagefield');
+            document.getElementById('recentimagescreen').addEventListener('click', function() {
+                var imageSection = "";
                 var course_id = <?php echo $courseID; ?>;
                 var student_id = <?php echo $studentID; ?>;
                 $.ajax({
                     url: '../actions/get_student_recent_images.php?course_id=' + course_id + '&student_id=' + student_id,
                     type: 'GET',
                     success: function(data) {
-                        var binaryData = image.ImageData; // assuming ImageData is a property that contains the binary data
-                        var base64String = btoa(binaryData);
-
                         imageSection += "<div class='row'>";
                         $.each(data, function(index, image) {
-                            imageSection += "<div class='col-md-4'><img src='data:image/png;base64," + base64String + "' width='304' height='304'></div>";
+                            console.log(data[index]["ImageData"]);
+                            var binaryData = data[index]["ImageData"]; // assuming ImageData is a property that contains the binary data
+                            var base64String = binaryData;
+                            imageSection += "<div class='col-md-4'><p>" + data[index]["AttendanceDateTime"] + "</p><img src='data:image/png;base64," + base64String + "' width='304' height='304'><p>" + data[index]["Status"] + "</p></div>";
                         });
                         imageSection += "</div>";
-
+                        document.getElementById('recentimagefield').innerHTML = imageSection;
                     },
                     error: function() {
                         alert('Error fetching data.');
                     }
                 });
             });
+
+            const blobToImage = (blob) => {
+                return new Promise((resolve) => {
+                    const url = URL.createObjectURL(blob);
+                    const img = new Image();
+                    img.onload = () => {
+                        resolve(img);
+                    };
+                    img.src = url;
+                });
+            };
         </script>
 </body>
 

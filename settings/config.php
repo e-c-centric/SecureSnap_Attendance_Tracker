@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "cs341webtech";
 $dbname = "securesnap";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Enroll Students In Course</title>
-    <link href="./../css/register.css" rel="stylesheet" type="text/css">
+    <link href="../css/register.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
@@ -92,7 +92,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #923D41;">
-        <a class="navbar-brand" href="./../views/Dashboard.php">Home</a>
+        <a class="navbar-brand" href="../views/Dashboard.php">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -101,7 +101,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="./../login/logout.php">
+                    <a class="nav-link" href="../login/logout.php">
                         <span>| </span>
                         <span class="fas fa-sign-out-alt"></span>
                         <span>Logout</span>
@@ -159,7 +159,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="./../actions/enrol_students_using_csv_action.php" method="post" enctype="multipart/form-data">
+                        <form action="../actions/enrol_students_using_csv_action.php" method="post" enctype="multipart/form-data">
                             <label for="csv_file">
                                 <i class="fas fa-file-csv"></i> Choose File:
                             </label>
@@ -169,7 +169,7 @@
                         <div style="padding:20px">
                             <h2>Download CSV Template</h2>
                             <p>Download a template CSV file to use as a guide for uploading data:</p>
-                            <a href='./../templates/enrol_student_template.csv' download>Download Template CSV</a>
+                            <a href='../templates/enrol_student_template.csv' download>Download Template CSV</a>
                         </div>
                     </div>
 
@@ -193,7 +193,7 @@
                     } else {
                         var formData = new FormData();
                         formData.append('csv_file', file);
-                        fetch('./../actions/enrol_students_using_csv_action.php', {
+                        fetch('../actions/enrol_students_using_csv_action.php', {
                                 method: 'POST',
                                 body: formData
                             })
@@ -212,7 +212,7 @@
             });
 
             document.addEventListener('DOMContentLoaded', function() {
-                fetch('./../actions/get_admin_profile.php')
+                fetch('../actions/get_admin_profile.php')
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById('name').innerHTML = data.Name;

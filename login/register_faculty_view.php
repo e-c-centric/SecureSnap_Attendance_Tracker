@@ -6,10 +6,10 @@
 	<title>Register</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="./../css/bootstrap.min.css">
-	<script type="text/javascript" src="./../js/jquery-3.4.1.min.js"></script>
-	<script src="./../js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="./../fontawesome/css/all.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../fontawesome/css/all.css">
 
 	<style type="text/css">
 		.login-form {
@@ -44,7 +44,7 @@
 <body>
 	<div class="login-form">
 		<h1>Register (Faculty Only)</h1>
-		<form action="./../actions/register_faculty_action.php" method="post" autocomplete="off">
+		<form action="../actions/register_faculty_action.php" method="post" autocomplete="off">
 			<div class="form-group">
 				<label for="username"><i class="fas fa-user"></i>
 				</label>
@@ -58,8 +58,11 @@
 				<select class="form-control" name="department" id="department" required>
 					<option value="" disabled selected>Select Department</option>
 					<?php
-					include '../functions/select_dpt_fxn.php';
-					echo getDepartments();
+					include '../actions/get_all_departments.php';
+
+					foreach ($departments as $department) {
+						echo '<option value="' . $department['DepartmentName'] . '">' . $department['DepartmentName'] . '</option>';
+					}
 					?>
 				</select>
 			</div>
@@ -93,22 +96,27 @@
 			} else {
 				var form = document.querySelector('form');
 				var formData = new FormData(form);
-				fetch('./../actions/register_faculty_action.php', {
-						method: 'POST',
-						body: formData
-					})
-					.then(response => response.json())
-					.then(data => {
+				$.ajax({
+					url: '../actions/register_faculty_action.php',
+					type: 'POST',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function(data) {
+						console.log(data);
+						test = JSON.parse(data);
+						console.log(test);
 						if (data.status) {
 							alert("Registration successful");
-							window.location.href = './../login/login.php';
+							window.location.href = '../login/login.php';
 						} else {
 							alert(data.message);
 						}
-					})
-					.catch(error => {
+					},
+					error: function(error) {
 						console.error('Error:', error);
-					});
+					}
+				});
 			}
 		});
 	</script>

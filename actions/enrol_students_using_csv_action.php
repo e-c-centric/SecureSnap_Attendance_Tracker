@@ -1,5 +1,5 @@
 <?php
-include('./../settings/config.php');
+include('../settings/config.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file'])) {
     $csv_file = $_FILES['csv_file']['tmp_name'];

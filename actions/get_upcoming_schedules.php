@@ -3,15 +3,19 @@
 $courseID = $_GET['courseID'];
 
 
-include './../settings/config.php';
-include './../settings/core.php';
-include './../functions/time_funx.php';
+include '../settings/config.php';
+include '../settings/core.php';
+include '../functions/time_funx.php';
 
 
 
-$today = "Tuesday";
-$currentHour = 12;
-$currentMinute = 40;
+$today = Weekday();
+$currentHour = Hour();
+$currentMinute = Minute();
+
+// $today = "Tuesday";
+// $currentHour = 12;
+// $currentMinute = 30;
 
 
 $days = array();
@@ -32,7 +36,12 @@ $upcomingSchedules = array();
 $dayIndex = array_search($today, $days);
 
 if ($dayIndex === false) {
-    echo json_encode(array("success" => false, "message" => "No upcoming schedules."));
+    $upcomingSchedules[] = array(
+        "success" => false,
+        "day" => $today,
+        "time" => $timeperiods[$dayIndex]
+    );
+    echo json_encode($upcomingSchedules);
 } else {
     $time = explode("-", $timeperiods[$dayIndex]);
     $startTime = $time[0];
@@ -58,6 +67,11 @@ if ($dayIndex === false) {
         );
         echo json_encode($upcomingSchedules);
     } else {
-        echo json_encode(array("success" => false, "message" => "No upcoming schedules.","time"=>$timeperiods[$dayIndex],"day"=>$today,"current"=>$currentTimeInMinutes,"start"=>$startTimeInMinutes,"diff"=>($currentTimeInMinutes - $startTimeInMinutes),"courseID"=>$courseID,"query"=>$query));
+        $upcomingSchedules[] = array(
+            "success" => false,
+            "day" => $today,
+            "time" => $timeperiods[$dayIndex]
+        );
+        echo json_encode($upcomingSchedules);
     }
 }

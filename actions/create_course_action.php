@@ -1,14 +1,15 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 
-include './../settings/config.php';
-include './../settings/core.php';
-include './../settings/functions.php';
+include '../settings/config.php';
+include '../settings/core.php';
+include '../settings/functions.php';
 
 if (!is_post_request()) {
     exit();
 }
 if (!is_logged_in()) {
-    header('Location: ./../index.php');
+    header('Location: ../index.php');
 }
 $response = "";
 $userID = $_SESSION['UserID'];
@@ -29,12 +30,12 @@ if ($userRole === 'faculty') {
     $sql = "INSERT IGNORE INTO courses (CourseCode, CourseName, FacultyID, Cohort, Semester, AcademicYear, ClassDays, ClassTimes) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $sql_2 = "INSERT IGNORE INTO attendancepin (CourseCode) VALUES (?)";
-
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("ssississ", $courseCode, $courseName, $facultyID, $cohort, $semester, $academicYear, $classDays, $classTimes);
 
         if ($stmt->execute()) {
+            $courseID = $conn->insert_id;
+            $sql_2 = "INSERT IGNORE INTO attendancepin (CourseID) VALUES ('$courseID')";
             mysqli_query($conn, $sql_2);
             echo "success";
             exit();

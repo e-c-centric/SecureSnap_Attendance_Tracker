@@ -4,11 +4,8 @@ include '../settings/config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $department = mysqli_real_escape_string($conn, $_POST['department']);
+    $departmentID = mysqli_real_escape_string($conn, $_POST['department']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-
-    $departmentNo = "SELECT DepartmentID FROM Departments WHERE DepartmentName = '$department'  LIMIT 1";
-    $departmentID = $conn->query($departmentNo)->fetch_assoc()['DepartmentID'];
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 

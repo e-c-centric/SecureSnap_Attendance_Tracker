@@ -2,8 +2,8 @@
 
 $courseID = $_GET['courseID'];
 
-include './../settings/config.php';
-include './../settings/core.php';
+include '../settings/config.php';
+include '../settings/core.php';
 
 $query = "UPDATE attendancepin SET CurrentPin = '' WHERE courseID = '$courseID'";
 $query_1 = "UPDATE courses SET isAttendanceActive = 0 WHERE courseID = '$courseID'";

@@ -1,7 +1,7 @@
 <?php
 
-include './../settings/config.php';
-include './../settings/core.php';
+include '../settings/config.php';
+include '../settings/core.php';
 
 $courseID = $_GET['courseID'];
 $newPin = $_GET['pin'];

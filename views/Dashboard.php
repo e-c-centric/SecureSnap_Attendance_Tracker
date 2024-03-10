@@ -1,12 +1,12 @@
 <?php
-include_once './../settings/core.php';
+include_once '../settings/core.php';
 
 if (!is_logged_in()) {
-  header('Location: ./../index.php');
+  header('Location: ../index.php');
 }
 
 if ($_SESSION['UserRole'] === 'admin') {
-  header('Location: ./admin_dashboard.php');
+  header('Location: admin_dashboard.php');
 }
 ?>
 
@@ -19,12 +19,12 @@ if ($_SESSION['UserRole'] === 'admin') {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Dashboard">
 
-  <link href="./../css/boxicons.min.css" rel="stylesheet">
+  <link href="../css/boxicons.min.css" rel="stylesheet">
 
   
   <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <script type="text/javascript" src="./../js/jquery-3.4.1.min.js"></script>
-  <script src="./../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
 
   
   <link rel="stylesheet" href="../fontawesome/css/all.css">
@@ -153,7 +153,7 @@ if ($_SESSION['UserRole'] === 'admin') {
 
       <?php
       if ($_SESSION['UserRole'] === 'student') {
-        include './../actions/get_enrolled_courses.php';
+        include '../actions/get_enrolled_courses.php';
 
         if (!empty($enrolledCourses)) {
           foreach ($enrolledCourses as $course) {
@@ -190,7 +190,7 @@ if ($_SESSION['UserRole'] === 'admin') {
         echo "</div>";
         echo "</div>";
 
-        include './../actions/get_courses_taught_action.php';
+        include '../actions/get_courses_taught_action.php';
         if (!empty($coursesTaught)) {
           foreach ($coursesTaught as $course) {
             echo "<div class='col-lg-3 col-md-4 col-sm-6'>";

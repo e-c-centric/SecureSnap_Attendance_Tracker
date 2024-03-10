@@ -1,7 +1,7 @@
 <?php
-include './../settings/core.php';
+include '../settings/core.php';
 if (!is_logged_in()) {
-    header('Location: ./../login/login.php');
+    header('Location: ../login/login.php');
 }
 $courseID = $_GET['courseID'];
 ?>
@@ -116,7 +116,7 @@ $courseID = $_GET['courseID'];
                 <a class="nav-link" data-toggle="tab" href="#pastview" id="pastView"><span class="fa fa-eye"></span> Past Schedule</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./../admin/enrol_students_in_course.php?courseID=<?php echo $courseID; ?>"><span class="fa fa-eye"></span>Register Students In Course</a>
+                <a class="nav-link" href="../admin/enrol_students_in_course.php?courseID=<?php echo $courseID; ?>"><span class="fa fa-eye"></span>Register Students In Course</a>
             </li>
         </ul>
 
@@ -211,7 +211,7 @@ $courseID = $_GET['courseID'];
         document.addEventListener('DOMContentLoaded', function() {
             var course_id = courseID;
             $.ajax({
-                url: './../actions/get_course_details.php?course_id=' + course_id,
+                url: '../actions/get_course_details.php?course_id=' + course_id,
                 type: 'GET',
                 success: function(data) {
                     var parsedData = JSON.parse(data);
@@ -232,17 +232,17 @@ $courseID = $_GET['courseID'];
         function upcomingSchedules() {
             var course_id = courseID;
             $.ajax({
-                url: './../actions/get_upcoming_schedules.php?courseID=' + course_id,
+                url: '../actions/get_upcoming_schedules.php?courseID=' + course_id,
                 type: 'GET',
                 success: function(data) {
-                    var parsedData = JSON.parse(data)[0];
-                    if (parsedData.success) {
-                        var day = parsedData.day;
-                        var time = parsedData.time;
+                    var parsedData = JSON.parse(data);
+                    if (parsedData[0]["success"]) {
+                        var day = parsedData[0]["day"];
+                        var time = parsedData[0]["time"];
                         var schedules = "<li class='list-group-item d-flex justify-content-between align-items-center'>Today: " + day + " Time " + time + "<button type='button' class='btn btn - primary' data-toggle='modal' data-target='#setPinModal'>Start Attendance</button></li >";
                         document.getElementById('upSchedules').innerHTML = schedules;
                     } else {
-                        document.getElementById('upSchedules').innerHTML = parsedData.message;
+                        document.getElementById('upSchedules').innerHTML = "<li class='list-group-item d-flex justify-content-between align-items-center'>No upcoming schedules</li>";
                     }
                 },
                 error: function() {
@@ -257,7 +257,7 @@ $courseID = $_GET['courseID'];
         function pastRecords() {
             var course_id = courseID;
             $.ajax({
-                url: './../actions/get_attendance_records_by_course.php?courseID=' + course_id,
+                url: '../actions/get_attendance_records_by_course.php?courseID=' + course_id,
                 type: 'GET',
                 success: function(data) {
                     var cop = JSON.parse(data);
@@ -268,7 +268,7 @@ $courseID = $_GET['courseID'];
                     for (var i = 0; i < cop.length; i++) {
                         var id = cop[i].UserID;
                         var name = cop[i].Name;
-                        tableBody += "<tr><td><a href = './../views/course_student_attendance_view.php?courseID=" + course_id + "&studentID=" + id + "'>" + name + "</a></td>";
+                        tableBody += "<tr><td><a href = '../views/course_student_attendance_view.php?courseID=" + course_id + "&studentID=" + id + "'>" + name + "</a></td>";
                         tableBody += "</tr>";
                     }
 
@@ -300,7 +300,7 @@ $courseID = $_GET['courseID'];
                 return;
             }
             $.ajax({
-                url: './../actions/set_attendance_pin.php?courseID=' + courseID + '&pin=' + newPin,
+                url: '../actions/set_attendance_pin.php?courseID=' + courseID + '&pin=' + newPin,
                 type: 'GET',
                 success: function(data) {
                     if (data == "success") {
@@ -310,7 +310,7 @@ $courseID = $_GET['courseID'];
                         $('#setPinModal').modal('hide');
                         setTimeout(function() {
                             $.ajax({
-                                url: './../actions/unset_attendance_pin.php?courseID=' + courseID,
+                                url: '../actions/unset_attendance_pin.php?courseID=' + courseID,
                                 type: 'GET',
                                 success: function(data) {
                                     console.log("PIN unset successfully");

@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <title>Login</title>
 </head>
 
 <body>
 
     <main>
-        <form action="./../actions/login_user_action.php" method="post", name = "loginForm", id = "loginForm">
+        <form action="../actions/login_user_action.php" method="post", name = "loginForm", id = "loginForm">
             <h1>Login</h1>
             <div>
                 <label for="email">Email:</label>
@@ -33,14 +33,14 @@
         form.addEventListener('submit', function(event) {
             event.preventDefault();
             const formData = new FormData(form);
-            fetch('./../actions/login_user_action.php', {
+            fetch('../actions/login_user_action.php', {
                     method: 'POST',
                     body: formData
                 })
                 .then(response => response.json())
                 .then(data => {
                     if (data.login === 'success') {
-                        window.location.href = './../views/dashboard.php';
+                        window.location.href = '../views/dashboard.php';
                     } else {
                         alert(data.message);
                     }

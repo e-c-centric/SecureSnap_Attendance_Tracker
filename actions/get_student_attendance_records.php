@@ -1,6 +1,6 @@
 <?php
 
-include './../settings/config.php';
+include '../settings/config.php';
 
 if (isset($_GET['course_id']) && isset($_GET['student_id'])) {
     $courseID = $_GET['course_id'];

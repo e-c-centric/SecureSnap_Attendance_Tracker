@@ -1,9 +1,9 @@
 <?php
 $courseID = $_GET['courseID'];
-include './../settings/config.php';
-include './../settings/core.php';
+include '../settings/config.php';
+include '../settings/core.php';
 if (!is_logged_in()) {
-  header('Location: ./../login/login.php');
+  header('Location: ../login/login.php');
 }
 ?>
 
@@ -70,7 +70,6 @@ if (!is_logged_in()) {
       text-decoration: none;
     }
 
-    /*sweet alert button color*/
     .swal-button {
       background-color: #923D41;
       padding: 7px 19px;
@@ -81,18 +80,15 @@ if (!is_logged_in()) {
       background-color: #923D41;
     }
 
-    /*tool tip flicker ussie resolve*/
     .tooltip {
       pointer-events: none;
     }
 
-    /*tab manu style*/
     .nav-tabs .nav-link.active {
       background-color: #923D41;
       color: white;
     }
 
-    /*scrollable list*/
     .list-group {
       max-height: 350px;
       margin-bottom: 5px;
@@ -238,7 +234,7 @@ if (!is_logged_in()) {
       var course_id = <?php echo $courseID; ?>;
       var userName = "<?php echo $_SESSION['Name']; ?>";
       $.ajax({
-        url: './../actions/get_course_details.php?course_id=' + course_id,
+        url: '../actions/get_course_details.php?course_id=' + course_id,
         type: 'GET',
         success: function(data) {
           var parsedData = JSON.parse(data);
@@ -259,17 +255,21 @@ if (!is_logged_in()) {
     function upcomingSchedules() {
       var course_id = <?php echo $courseID; ?>;
       $.ajax({
-        url: './../actions/get_upcoming_schedules.php?courseID=' + course_id,
+        url: '../actions/get_upcoming_schedules.php?courseID=' + course_id,
         type: 'GET',
         success: function(data) {
-          var parsedData = JSON.parse(data)[0];
-          if (parsedData.success) {
-            var day = parsedData.day;
-            var time = parsedData.time;
+          var parsedData = JSON.parse(data);
+          console.log(parsedData[0]["success"]);
+          if (parsedData[0]["success"]) {
+            var day = parsedData[0]["day"];
+            var time = parsedData[0]["time"];
+            console.log(day);
+            console.log(time);
+
             var schedules = "<li class='list-group-item d-flex justify-content-between align-items-center'>Today: " + day + " Time <div id ='times'>" + time + "</div><button type='button' class='btn btn - primary' data-toggle='modal' data-target='#addModal'>Take Attendance</button></li >";
             document.getElementById('upSchedules').innerHTML = schedules;
           } else {
-            document.getElementById('upSchedules').innerHTML = parsedData.message;
+            document.getElementById('upSchedules').innerHTML = "<li class='list-group-item d-flex justify-content-between align-items-center'>No upcoming schedules</li>";
           }
         },
         error: function() {
@@ -285,7 +285,7 @@ if (!is_logged_in()) {
       var course_id = <?php echo $courseID; ?>;
       var student_id = <?php echo $_SESSION['UserID']; ?>;
       $.ajax({
-        url: './../actions/get_student_attendance_records.php?course_id=' + course_id + '&student_id=' + student_id,
+        url: '../actions/get_student_attendance_records.php?course_id=' + course_id + '&student_id=' + student_id,
         type: 'GET',
         success: function(data) {
           console.log(data["StatisticsData"]);
@@ -357,7 +357,7 @@ if (!is_logged_in()) {
               });
 
               $.ajax({
-                url: './../actions/verify_attendance_pin.php',
+                url: '../actions/verify_attendance_pin.php',
                 type: 'POST',
                 data: {
                   image: dataUrl,

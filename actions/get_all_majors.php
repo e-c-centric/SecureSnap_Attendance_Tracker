@@ -1,6 +1,6 @@
 <?php
 
-include './../settings/config.php';
+include '../settings/config.php';
 
 $sql = "SELECT * FROM majors";
 $result = $conn->query($sql);

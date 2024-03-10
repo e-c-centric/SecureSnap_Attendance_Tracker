@@ -4,7 +4,7 @@ $studentID = $_GET['studentID'];
 include './../settings/config.php';
 include './../settings/core.php';
 if (!is_logged_in()) {
-    header('Location: ./../login/login.php');
+    header('Location: ../login/login.php');
 }
 ?>
 
@@ -18,21 +18,21 @@ if (!is_logged_in()) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    
+
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
-    
 
-    
+
+
     <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-    
+
     <script src="../js/sweetalert.min.js"></script>
 
-    
-    
-    
+
+
+
     <style type="text/css" media="screen">
         a:link {
             color: black;
@@ -109,16 +109,16 @@ if (!is_logged_in()) {
 
 <body>
 
-    
 
-    
-    
 
-    
+
+
+
+
     <?php
     include 'head.php';
     ?>
-    
+
 
     <div class="container mt-1">
 
@@ -126,16 +126,19 @@ if (!is_logged_in()) {
             loading</h2>
         <br>
 
-        
+
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#pastview" id="pastView"><span class="fa fa-eye"></span>Attendance Records</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#recentimage" id="recentImage"><span class="fa fa-image"></span>Recent Images</a>
+            </li>
         </ul>
 
-        
+
         <div class="tab-content">
-            
+
             <div class="container tab-pane active" id="pastview">
                 <br>
 
@@ -152,85 +155,119 @@ if (!is_logged_in()) {
                 </ul>
 
             </div>
+
+            <div class="container tab-pane" id="recentimage">
+                <br>
+                <div class="text-center">
+                    <h5>Recent Images</h5>
+                </div>
+                <div id="recentimagefield">
+
+                </div>
+
+            </div>
+
+
+
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var course_id = <?php echo $courseID; ?>;
+                var userName = "<?php
+                                $query = "SELECT Name FROM users WHERE UserID = $studentID";
+                                $result = mysqli_query($conn, $query);
+                                $row = mysqli_fetch_assoc($result);
+                                echo $row['Name'];
+                                ?>";
+                $.ajax({
+                    url: '../actions/get_course_details.php?course_id=' + course_id,
+                    type: 'GET',
+                    success: function(data) {
+                        var parsedData = JSON.parse(data);
+                        var courseCode = parsedData[0].CourseCode;
+                        var courseName = parsedData[0].CourseName;
+                        document.getElementById('courseName').innerText = courseCode + ": " + courseName + " Attendance Tracking: " + userName;
 
+                    },
 
+                    error: function() {
+                        alert('Error fetching data.');
+                    }
 
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var course_id = <?php echo $courseID; ?>;
-            var userName = "<?php
-                            $query = "SELECT Name FROM users WHERE UserID = $studentID";
-                            $result = mysqli_query($conn, $query);
-                            $row = mysqli_fetch_assoc($result);
-                            echo $row['Name'];
-                            ?>";
-            $.ajax({
-                url: './../actions/get_course_details.php?course_id=' + course_id,
-                type: 'GET',
-                success: function(data) {
-                    var parsedData = JSON.parse(data);
-                    var courseCode = parsedData[0].CourseCode;
-                    var courseName = parsedData[0].CourseName;
-                    document.getElementById('courseName').innerText = courseCode + ": " + courseName + " Attendance Tracking: " + userName;
-
-                },
-
-                error: function() {
-                    alert('Error fetching data.');
-                }
-
+                });
             });
-        });
 
-        document.addEventListener('DOMContentLoaded', pastRecords);
+            document.addEventListener('DOMContentLoaded', pastRecords);
 
-        function pastRecords() {
-            var course_id = <?php echo $courseID; ?>;
-            var student_id = <?php echo $studentID; ?>;
-            $.ajax({
-                url: './../actions/get_student_attendance_records.php?course_id=' + course_id + '&student_id=' + student_id,
-                type: 'GET',
-                success: function(data) {
-                    console.log(data["StatisticsData"]);
-                    var list = $('#pastSchedules');
-                    list.empty();
+            function pastRecords() {
+                var course_id = <?php echo $courseID; ?>;
+                var student_id = <?php echo $studentID; ?>;
+                $.ajax({
+                    url: '../actions/get_student_attendance_records.php?course_id=' + course_id + '&student_id=' + student_id,
+                    type: 'GET',
+                    success: function(data) {
+                        console.log(data["StatisticsData"]);
+                        var list = $('#pastSchedules');
+                        list.empty();
 
-                    $.each(data["attendanceRecords"], function(index, record) {
-                        if (record.Status == 'present') {
-                            var listItem = "<li class='list-group-item d-flex justify-content-between align-items-center'>" +
-                                record.AttendanceDateTime +
-                                "<span class='badge badge-pill badge-success'>" +
-                                record.Status +
-                                "</span></li>";
-                        } else if (record.Status == 'Late') {
-                            var listItem = "<li class='list-group-item d-flex justify-content-between align-items-center'>" +
-                                record.AttendanceDateTime +
-                                "<span class='badge badge-pill badge-warning'>" +
-                                record.Status +
-                                "</span></li>";
-                        } else {
-                            var listItem = "<li class='list-group-item d-flex justify-content-between align-items-center'>" +
-                                record.AttendanceDateTime +
-                                "<span class='badge badge-pill badge-danger'>" +
-                                record.Status +
-                                "</span></li>";
-                        }
+                        $.each(data["attendanceRecords"], function(index, record) {
+                            if (record.Status == 'present') {
+                                var listItem = "<li class='list-group-item d-flex justify-content-between align-items-center'>" +
+                                    record.AttendanceDateTime +
+                                    "<span class='badge badge-pill badge-success'>" +
+                                    record.Status +
+                                    "</span></li>";
+                            } else if (record.Status == 'Late') {
+                                var listItem = "<li class='list-group-item d-flex justify-content-between align-items-center'>" +
+                                    record.AttendanceDateTime +
+                                    "<span class='badge badge-pill badge-warning'>" +
+                                    record.Status +
+                                    "</span></li>";
+                            } else {
+                                var listItem = "<li class='list-group-item d-flex justify-content-between align-items-center'>" +
+                                    record.AttendanceDateTime +
+                                    "<span class='badge badge-pill badge-danger'>" +
+                                    record.Status +
+                                    "</span></li>";
+                            }
 
-                        list.append(listItem);
-                    });
-                    document.getElementById('totalStats').innerText = data["StatisticsData"].total;
-                    document.getElementById('presentStats').innerText = data["StatisticsData"].present;
-                    document.getElementById('lateStats').innerText = data["StatisticsData"].late;
-                    document.getElementById('absentStats').innerText = data["StatisticsData"].absent;
-                },
-                error: function() {
-                    alert('Error fetching data.');
-                }
+                            list.append(listItem);
+                        });
+                        document.getElementById('totalStats').innerText = data["StatisticsData"].total;
+                        document.getElementById('presentStats').innerText = data["StatisticsData"].present;
+                        document.getElementById('lateStats').innerText = data["StatisticsData"].late;
+                        document.getElementById('absentStats').innerText = data["StatisticsData"].absent;
+                    },
+                    error: function() {
+                        alert('Error fetching data.');
+                    }
+                });
+            }
+
+            document.addEventListener('recentImage', function() {
+                var imageSection = document.getElementById('recentimagefield');
+                var course_id = <?php echo $courseID; ?>;
+                var student_id = <?php echo $studentID; ?>;
+                $.ajax({
+                    url: '../actions/get_student_recent_images.php?course_id=' + course_id + '&student_id=' + student_id,
+                    type: 'GET',
+                    success: function(data) {
+                        var binaryData = image.ImageData; // assuming ImageData is a property that contains the binary data
+                        var base64String = btoa(binaryData);
+
+                        imageSection += "<div class='row'>";
+                        $.each(data, function(index, image) {
+                            imageSection += "<div class='col-md-4'><img src='data:image/png;base64," + base64String + "' width='304' height='304'></div>";
+                        });
+                        imageSection += "</div>";
+
+                    },
+                    error: function() {
+                        alert('Error fetching data.');
+                    }
+                });
             });
-        }
-    </script>
+        </script>
 </body>
 
 </html>

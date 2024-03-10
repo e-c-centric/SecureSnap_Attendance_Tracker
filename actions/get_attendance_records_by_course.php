@@ -2,8 +2,8 @@
 
 $courseID = $_GET['courseID'];
 
-include './../settings/config.php';
-include './../settings/core.php';
+include '../settings/config.php';
+include '../settings/core.php';
 
 $query = "SELECT DISTINCT StudentID FROM studentcourses WHERE courseID = '$courseID'";
 $result = mysqli_query($conn, $query);

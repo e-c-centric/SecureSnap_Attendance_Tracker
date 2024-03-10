@@ -1,6 +1,6 @@
 <?php
-include('./../settings/config.php');
-include('./../settings/core.php');
+include('../settings/config.php');
+include('../settings/core.php');
 
 global $conn;
 

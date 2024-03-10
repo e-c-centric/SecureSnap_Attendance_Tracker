@@ -7,20 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    
+
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 
-    
+
     <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-    
+
     <script src="../js/sweetalert.min.js"></script>
 
-    
 
-    
+
+
     <style type="text/css" media="screen">
         a:link {
             color: black;
@@ -82,14 +82,14 @@
 
 <body>
 
-    
 
-    
-    
 
-    
+
+
+
+
     <?php include 'head.php'; ?>
-    
+
 
     <div class="container mt-1">
 
@@ -121,27 +121,27 @@
                 </table>
             </div>
 
-            
+
             <div class="text-center"><br>
                 <button class="btn btn-secondary" data-toggle="modal" data-target="#editaUser" id="editProfile"><span class="fas fa-upload"></span> Edit Profile</button>
             </div>
         </div>
 
 
-        
+
         <div class="modal fade" id="editaUser">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
 
-                    
+
                     <div class="modal-header">
                         <h4 class="modal-title">Update Account</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
-                    
+
                     <div class="modal-body">
-                        
+
                         <div>
                             <form action="">
 
@@ -156,7 +156,7 @@
                                         <select class="form-control" id="updepartment">
                                             <option value="0">Select Department</option>
                                             <?php
-                                            include './../actions/get_all_departments.php';
+                                            include '../actions/get_all_departments.php';
                                             foreach ($majors as $major) {
                                                 echo "<option value='" . $major['DepartmentID'] . "'>" . $major['DepartmentName'] . "</option>";
                                             }
@@ -174,7 +174,7 @@
                                 </div>
                             </form>
 
-                            
+
                             <div class="d-flex justify-content-center">
                                 <div id="updateLoading" role="status">
                                 </div>
@@ -183,7 +183,7 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
@@ -191,7 +191,7 @@
                 </div>
             </div>
         </div>
-        
+
         <br><br>
 
 
@@ -200,7 +200,7 @@
     <script>
         $(document).ready(function() {
             $.ajax({
-                url: './../actions/get_profile_action.php',
+                url: '../actions/get_profile_action.php',
                 type: 'GET',
                 success: function(response) {
                     $('#name').text(response.name);
@@ -223,7 +223,7 @@
             };
 
             $.ajax({
-                url: './../actions/update_faculty_action.php',
+                url: '../actions/update_faculty_action.php',
                 type: 'POST',
                 data: data,
                 success: function(response) {
@@ -240,7 +240,7 @@
 
         document.getElementById('editProfile').addEventListener('click', function() {
             $.ajax({
-                url: './../actions/get_profile_action.php',
+                url: '../actions/get_profile_action.php',
                 type: 'GET',
                 success: function(response) {
                     $('#upname').val(response.name);

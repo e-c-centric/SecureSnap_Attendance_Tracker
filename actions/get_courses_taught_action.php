@@ -1,6 +1,6 @@
 <?php
 
-include './../settings/config.php';
+include '../settings/config.php';
 
 
 $userID = $_SESSION['UserID'];

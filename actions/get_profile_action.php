@@ -1,11 +1,11 @@
 <?php
 
-include './../settings/config.php';
-include './../settings/core.php';
-include './../settings/functions.php';
+include '../settings/config.php';
+include '../settings/core.php';
+include '../settings/functions.php';
 
 if (!is_logged_in()) {
-    header('Location: ./../login/login.php');
+    header('Location: ../login/login.php');
     exit();
 }
 
@@ -48,7 +48,6 @@ if ($_SESSION['UserRole'] === 'faculty') {
     } else {
         echo "Faculty ID not found for the given UserID.";
     }
-    $conn->close();
 } else {
     $sql = "SELECT u.Name, u.UserID, u.Email, s.YearGroup, s.Major
         FROM users u
@@ -81,5 +80,4 @@ if ($_SESSION['UserRole'] === 'faculty') {
     } else {
         echo "Student ID not found for the given UserID.";
     }
-    $conn->close();
 }

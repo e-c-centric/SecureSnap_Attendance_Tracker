@@ -1,6 +1,6 @@
 <?php
 $courseID = $_GET['course_id'];
-include './../settings/config.php';
+include '../settings/config.php';
 
 $sql = "SELECT * FROM courses WHERE CourseID = $courseID";
 $result = $conn->query($sql);

@@ -175,7 +175,7 @@
                     <select class="form-control" id="upumajor">
                       <option value="0">Select Major</option>
                       <?php
-                      include './../actions/get_all_majors.php';
+                      include '../actions/get_all_majors.php';
                       foreach ($majors as $major) {
                         echo "<option value='" . $major['MajorID'] . "'>" . $major['MajorName'] . "</option>";
                       }
@@ -219,7 +219,7 @@
   <script>
     $(document).ready(function() {
       $.ajax({
-        url: './../actions/get_profile_action.php',
+        url: '../actions/get_profile_action.php',
         type: 'GET',
         success: function(response) {
           $('#name').text(response.name);
@@ -245,7 +245,7 @@
       };
 
       $.ajax({
-        url: './../actions/update_student_action.php',
+        url: '../actions/update_student_action.php',
         type: 'POST',
         data: data,
         success: function(response) {
@@ -262,7 +262,7 @@
 
     document.getElementById('editProfile').addEventListener('click', function() {
       $.ajax({
-        url: './../actions/get_profile_action.php',
+        url: '../actions/get_profile_action.php',
         type: 'GET',
         success: function(response) {
           $('#upname').val(response.name);

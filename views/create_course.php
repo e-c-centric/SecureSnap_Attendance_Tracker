@@ -1,7 +1,7 @@
 <?php
-include './../settings/core.php';
+include '../settings/core.php';
 if (!is_logged_in()) {
-    header('Location: ./../login/login.php');
+    header('Location: ../login/login.php');
 } ?>
 <!DOCTYPE html>
 <html>
@@ -13,9 +13,9 @@ if (!is_logged_in()) {
 
 
 
-    <script type="text/javascript" src="./../js/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="./../css/bootstrap.min.css">
-    <script src="./../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.min.js"></script>
 
 
     <link rel="stylesheet" href="../fontawesome/css/all.css">
@@ -245,7 +245,7 @@ if (!is_logged_in()) {
             } else {
                 $.ajax({
                     type: "POST",
-                    url: "./../actions/create_course_action.php",
+                    url: "../actions/create_course_action.php",
                     data: {
                         courseCode: coursecode,
                         courseName: coursename,

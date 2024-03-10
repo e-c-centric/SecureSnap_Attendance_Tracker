@@ -10,9 +10,9 @@ $imageData = base64_decode($imageData);
 
 
 
-include './../settings/config.php';
-include './../settings/core.php';
-include './../functions/time_funx.php';
+include '../settings/config.php';
+include '../settings/core.php';
+include '../functions/time_funx.php';
 
 $userID = $_SESSION['UserID'];
 

@@ -1,6 +1,6 @@
 <?php
-include './../settings/config.php';
-include './../settings/core.php';
+include '../settings/config.php';
+include '../settings/core.php';
 
 $previous = "javascript:history.go(-1)";
 if (isset($_SERVER['HTTP_REFERER'])) {
@@ -9,7 +9,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 
 if (!isset($_GET['courseID']) || !isset($_SESSION['UserID'])) {
     if ($_SESSION['UserRole'] == 'student') {
-        header("Location: ./../index.php");
+        header("Location: ../index.php");
         exit();
     }
 }
@@ -21,7 +21,7 @@ $courseID = $_GET['courseID'];
 <head>
     <meta charset="utf-8">
     <title>Enroll Students In Course</title>
-    <link href="./../css/register.css" rel="stylesheet" type="text/css">
+    <link href="../css/register.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
@@ -109,11 +109,11 @@ $courseID = $_GET['courseID'];
 
 <body>
     <?php
-    include './../views/head.php';
+    include '../views/head.php';
     ?>
     <div class="register">
         <h1>Upload CSV File To Register Students In Your Course</h1>
-        <form action="./../actions/register_student_to_course_action.php" method="post" enctype="multipart/form-data">
+        <form action="../actions/register_student_to_course_action.php" method="post" enctype="multipart/form-data">
             <label for="csv_file">
                 <i class="fas fa-file-csv"></i> Choose File:
             </label>
@@ -123,7 +123,7 @@ $courseID = $_GET['courseID'];
         <div style="padding:20px">
             <h2>Download CSV Template</h2>
             <p>Download a template CSV file to use as a guide for uploading data:</p>
-            <a href='./../templates/register_student_template.csv' download>Download Template CSV</a>
+            <a href='../templates/register_student_template.csv' download>Download Template CSV</a>
         </div>
 
     </div>
@@ -142,7 +142,7 @@ $courseID = $_GET['courseID'];
                     var courseID = <?php echo $courseID; ?>;
                     var formData = new FormData();
                     formData.append('csvFile', file);
-                    fetch('./../actions/register_student_to_course_action.php?courseID=' + courseID, {
+                    fetch('../actions/register_student_to_course_action.php?courseID=' + courseID, {
                             method: 'POST',
                             body: formData
                         })

@@ -50,3 +50,4 @@ if ($userRole === 'faculty') {
 } else {
     echo "You are not authorized to create a course";
 }
+

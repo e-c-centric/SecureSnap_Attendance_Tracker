@@ -56,14 +56,13 @@
 			</div>
 			<div class="form-group">
 				<select class="form-control" name="department" id="department" required>
-					<option value="" disabled selected>Select Department</option>
-					<?php
-					include '../actions/get_all_departments.php';
-
-					foreach ($majors as $department) {
-						echo '<option value="' . $department['DepartmentName'] . '">' . $department['DepartmentName'] . '</option>';
-					}
-					?>
+					<option value="0">Select Department</option>
+                                            <?php
+                                            include '../actions/get_all_departments.php';
+                                            foreach ($majors as $major) {
+                                                echo "<option value='" . $major['DepartmentID'] . "'>" . $major['DepartmentName'] . "</option>";
+                                            }
+                                            ?>
 				</select>
 			</div>
 
@@ -84,7 +83,7 @@
 		<p class="text-center"><a href="mailto:elikem.gale-zoyiku@ashesi.edu.gh?subject=Desire%To%Register%As%A%Student">Want to register as a student?</a></p>
 	</div>
 
-	<script>
+<script>
 		document.getElementById("submit").addEventListener("click", function(event) {
 			event.preventDefault();
 			var password = document.getElementById("password").value;
@@ -104,13 +103,12 @@
 					contentType: false,
 					success: function(data) {
 						console.log(data);
-						test = JSON.parse(data);
-						console.log(test);
-						if (data.status) {
+						data = JSON.parse(data);
+						if (data["status"]) {
 							alert("Registration successful");
 							window.location.href = '../login/login.php';
-						} else {
-							alert(data.message);
+						} else {i
+							alert(data["message"]);
 						}
 					},
 					error: function(error) {

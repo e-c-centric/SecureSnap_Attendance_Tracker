@@ -48,6 +48,7 @@ if ($_SESSION['UserRole'] === 'faculty') {
     } else {
         echo "Faculty ID not found for the given UserID.";
     }
+    $conn->close();
 } else {
     $sql = "SELECT u.Name, u.UserID, u.Email, s.YearGroup, s.Major
         FROM users u
@@ -80,4 +81,5 @@ if ($_SESSION['UserRole'] === 'faculty') {
     } else {
         echo "Student ID not found for the given UserID.";
     }
+    $conn->close();
 }

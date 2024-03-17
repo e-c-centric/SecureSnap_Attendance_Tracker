@@ -308,18 +308,6 @@ $courseID = $_GET['courseID'];
                             icon: "success",
                         });
                         $('#setPinModal').modal('hide');
-                        setTimeout(function() {
-                            $.ajax({
-                                url: '../actions/unset_attendance_pin.php?courseID=' + courseID,
-                                type: 'GET',
-                                success: function(data) {
-                                    console.log("PIN unset successfully");
-                                },
-                                error: function() {
-                                    console.log("Error unsetting PIN.");
-                                }
-                            });
-                        }, 15 * 60 * 1000);
                     } else {
                         swal("Failed to set PIN", {
                             icon: "error",

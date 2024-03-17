@@ -74,3 +74,4 @@ We welcome contributions from the community to enhance the SecureSnap Attendance
 6. Submit a pull request, detailing the changes you have made.
 
 ---
+Thank you for choosing the SecureSnap Attendance Tracker for your school's attendance recording needs. If you have any questions or need further assistance, please don't hesitate to contact us. Happy tracking!

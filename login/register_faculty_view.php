@@ -60,7 +60,7 @@
 					<?php
 					include '../actions/get_all_departments.php';
 
-					foreach ($departments as $department) {
+					foreach ($majors as $department) {
 						echo '<option value="' . $department['DepartmentName'] . '">' . $department['DepartmentName'] . '</option>';
 					}
 					?>

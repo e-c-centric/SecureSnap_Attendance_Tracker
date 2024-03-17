@@ -24,7 +24,7 @@
             <div class="notfound-404">
                 <h1>Oops!</h1>
             </div>
-            <a href="./../views/Dashboard.php">Go To Dashboard</a>
+            <a href="views/dashboard.php">Go To Dashboard</a>
         </div>
     </div>
 

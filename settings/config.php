@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "securesnap";
+$dbname = "SS2024";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

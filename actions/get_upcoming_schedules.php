@@ -59,7 +59,7 @@ if ($dayIndex === false) {
     $currentTimeInMinutes = ($currentHour * 60) + $currentMinute;
 
 
-    if ($currentTimeInMinutes <= $startTimeInMinutes + 15 && ($currentTimeInMinutes - $startTimeInMinutes) <= 15) {
+    if ($currentTimeInMinutes <= $startTimeInMinutes + 30 && abs($currentTimeInMinutes - $startTimeInMinutes) <= 15) {
         $upcomingSchedules[] = array(
             "success" => true,
             "day" => $today,

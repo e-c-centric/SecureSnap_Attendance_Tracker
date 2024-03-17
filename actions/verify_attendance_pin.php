@@ -41,11 +41,13 @@ $present_state = "";
 
 if ($currentTime >= $startTimeInMinutes && $currentTime <= $startTimeInMinutes + 5) { //5 minute rule
     $present_state = "present";
-} else if ($currentTime > $startTimeInMinutes + 10 && $currentTime <= $endTimeInMinutes) {
+} else if ($currentTime > $startTimeInMinutes + 5 && $currentTime <= $endTimeInMinutes  && $currentTime <= $startTimeInMinutes + 15) { //5 minute rule
     $present_state = "late";
 } else {
     $present_state = "absent";
 }
+
+
 
 $todays_date_time = date("Y-m-d");
 $todays_date_time = (string)$todays_date_time . $times;

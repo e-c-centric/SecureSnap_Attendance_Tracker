@@ -177,7 +177,7 @@ $courseID = $_GET['courseID'];
                             <form action="">
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Enter new 4-digit PIN" id="newPin" required="required" maxlength="4" pattern="\d{4}">
+                                    <input type="text" class="form-control" placeholder="Enter new 4-digit PIN" id="newPin" required="required" maxlength="4" pattern="\d{4}">
                                 </div>
 
                                 <div class="form-group">

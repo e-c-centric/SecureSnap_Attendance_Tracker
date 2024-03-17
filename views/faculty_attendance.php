@@ -175,10 +175,10 @@ $courseID = $_GET['courseID'];
 
                         <div>
                             <form action="">
-
+                                <!-- 
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Enter new 4-digit PIN" id="newPin" required="required" maxlength="4" pattern="\d{4}">
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block btn-success" id="setPinButton" onclick="setPin(event)"><i class="fa fa-user-plus"></i> Set PIN</button>
@@ -239,7 +239,7 @@ $courseID = $_GET['courseID'];
                     if (parsedData[0]["success"]) {
                         var day = parsedData[0]["day"];
                         var time = parsedData[0]["time"];
-                        var schedules = "<li class='list-group-item d-flex justify-content-between align-items-center'>Today: " + day + " Time " + time + "<button type='button' class='btn btn - primary' data-toggle='modal' data-target='#setPinModal'>Start Attendance</button></li >";
+                        var schedules = "<li class='list-group-item d-flex justify-content-between align-items-center'>Today: " + day + " Time " + time + "<button type='button' class='btn btn - primary' data-toggle='modal' id = 'setPinTrigger' data-target='#setPinModal'>Start Attendance</button></li >";
                         document.getElementById('upSchedules').innerHTML = schedules;
                     } else {
                         document.getElementById('upSchedules').innerHTML = "<li class='list-group-item d-flex justify-content-between align-items-center'>No upcoming schedules</li>";
@@ -284,27 +284,15 @@ $courseID = $_GET['courseID'];
 
         function setPin(event) {
             event.preventDefault();
-            var newPin = document.getElementById('newPin').value;
-            if (newPin == "") {
-                document.getElementById('pin_empty').classList.add('show');
-                setTimeout(function() {
-                    document.getElementById('pin_empty').classList.remove('show');
-                }, 3000);
-                return;
-            }
-            if ((newPin.length != 4) || isNaN(newPin)) {
-                document.getElementById('pin_invalid').classList.add('show');
-                setTimeout(function() {
-                    document.getElementById('pin_invalid').classList.remove('show');
-                }, 3000);
-                return;
-            }
+            var newPin = generatePin();
+            console.log(newPin);
+
             $.ajax({
                 url: '../actions/set_attendance_pin.php?courseID=' + courseID + '&pin=' + newPin,
                 type: 'GET',
                 success: function(data) {
                     if (data == "success") {
-                        swal("PIN set successfully", {
+                        swal("PIN set successfully\nPin is " + newPin + "\nPlease share with students to enable them to mark attendance.", {
                             icon: "success",
                         });
                         $('#setPinModal').modal('hide');
@@ -320,6 +308,11 @@ $courseID = $_GET['courseID'];
             });
 
 
+        }
+
+        function generatePin() {
+            var pin = Math.floor(1000 + Math.random() * 9000);
+            return pin;
         }
     </script>
 </body>

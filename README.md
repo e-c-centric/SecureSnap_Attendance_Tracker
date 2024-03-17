@@ -3,10 +3,22 @@
 Welcome to the SecureSnap Attendance Tracker project! This web-based application is designed to help schools efficiently record student attendance using a secure pin and picture system. The application allows users to register, log in, manage student information, track attendance, and handle course registrations. This README provides an overview of the project, installation instructions, and usage guidelines.
 
 ## Table of Contents
+- [Introducuction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
+
+## Introduction
+Did you know that despite the introduction of online attendance-taking apps, schools still struggle to ensure accurate attendance records? This is due to potential attendance fraud and privacy concerns associated with capturing real-time images of students during attendance marking.
+This problem extends to Ashesi's attendance-taking system, which has no real way to verify that students were actually in class while taking attendance. Students regular take attendance while not in class yet.
+
+## Solution
+Secure Snap Tracker effectively addresses attendance issues by seamlessly integrating photo capture during the attendance process. Upon taking attendance, the camera activates for five seconds, capturing the user's face and storing the information securely. This feature enables instructors to reference the captured photo, providing clarity in case of any confusion regarding a user's attendance status.
+
+
+## Link to repository
+[SecureSnap_Attendance_Tracker](https://github.com/e-c-centric/SecureSnap_Attendance_Tracker.git)
 
 
 ## Features
@@ -26,12 +38,14 @@ The SecureSnap Attendance Tracker offers the following key features:
 ## Installation
 To install and run the SecureSnap Attendance Tracker, follow these steps:
 
-1. Clone the project repository from [GitHub](https://github.com/our/repo).
-2. Navigate to the project directory.
-3. Install the required dependencies using the package manager of your choice (e.g., npm or yarn).
-4. Set up the database by running the necessary migrations and seeders.
-5. Configure the database connection in the project's configuration file.
-6. Start the server and ensure it is running without any errors.
+1. Clone the project repository from [GitHub](https://github.com/e-c-centric/SecureSnap_Attendance_Tracker.git).
+2. Move the project folder into the `htdocs` or `var/www/` folder of your preferred server (e.g., Apache).
+3. Import the `SS2024.sql` file into your PHPMyAdmin or SQL server to create the necessary database.
+4. Configure the database connection in the project's configuration file.
+5. Start the server and ensure it is running without any errors.
+6. Access the application by entering the URL of your server in your preferred web browser.
+
+If you encounter any issues during the installation process or need further assistance, please don't hesitate to contact us.
 
 ## Usage
 Once the installation process is complete and the server is running, follow these steps to use the SecureSnap Attendance Tracker:
@@ -60,4 +74,3 @@ We welcome contributions from the community to enhance the SecureSnap Attendance
 6. Submit a pull request, detailing the changes you have made.
 
 ---
-Thank you for choosing the SecureSnap Attendance Tracker for your school's attendance recording needs. If you have any questions or need further assistance, please don't hesitate to contact us. Happy tracking!

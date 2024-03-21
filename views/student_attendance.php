@@ -40,12 +40,12 @@ if (!is_logged_in()) {
     }
 
     a:hover {
-      color: #923D41;
+      color: #57923d;
       text-decoration: none;
     }
 
     a:active {
-      color: #923D41;
+      color: #57923d;
       text-decoration: none;
     }
 
@@ -71,13 +71,13 @@ if (!is_logged_in()) {
     }
 
     .swal-button {
-      background-color: #923D41;
+      background-color: #57923d;
       padding: 7px 19px;
       box-shadow: none !important;
     }
 
     .swal-button:not([disabled]):hover {
-      background-color: #923D41;
+      background-color: #57923d;
     }
 
     .tooltip {
@@ -85,7 +85,7 @@ if (!is_logged_in()) {
     }
 
     .nav-tabs .nav-link.active {
-      background-color: #923D41;
+      background-color: #57923d;
       color: white;
     }
 
@@ -113,7 +113,7 @@ if (!is_logged_in()) {
 
   <div class="container mt-1">
 
-    <h2 style="color: #923D41;" id="courseName"><span class="fa fa-users"></span>
+    <h2 style="color: #57923d;" id="courseName"><span class="fa fa-users"></span>
       loading</h2>
     <br>
 

@@ -34,12 +34,12 @@
     }
 
     a:hover {
-      color: #923D41;
+      color: #57923d;
       text-decoration: none;
     }
 
     a:active {
-      color: #923D41;
+      color: #57923d;
       text-decoration: none;
     }
 
@@ -66,13 +66,13 @@
 
     /*sweet alert button color*/
     .swal-button {
-      background-color: #923D41;
+      background-color: #57923d;
       padding: 7px 19px;
       box-shadow: none !important;
     }
 
     .swal-button:not([disabled]):hover {
-      background-color: #923D41;
+      background-color: #57923d;
     }
 
     img {

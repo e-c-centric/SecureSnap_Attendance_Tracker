@@ -45,12 +45,12 @@ $courseID = $_GET['courseID'];
         }
 
         a:hover {
-            color: #923D41;
+            color: #57923d;
             text-decoration: none;
         }
 
         a:active {
-            color: #923D41;
+            color: #57923d;
             text-decoration: none;
         }
 
@@ -77,13 +77,13 @@ $courseID = $_GET['courseID'];
 
         /*sweet alert button color*/
         .swal-button {
-            background-color: #923D41;
+            background-color: #57923d;
             padding: 7px 19px;
             box-shadow: none !important;
         }
 
         .swal-button:not([disabled]):hover {
-            background-color: #923D41;
+            background-color: #57923d;
         }
 
         /*tool tip flicker ussie resolve*/
@@ -93,7 +93,7 @@ $courseID = $_GET['courseID'];
 
         /*tab manu style*/
         .nav-tabs .nav-link.active {
-            background-color: #923D41;
+            background-color: #57923d;
             color: white;
         }
 

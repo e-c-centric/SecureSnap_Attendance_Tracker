@@ -21,15 +21,15 @@ if ($_SESSION['UserRole'] === 'admin') {
 
   <link href="../css/boxicons.min.css" rel="stylesheet">
 
-  
+
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
-  
+
   <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-  
+
   <style type="text/css" media="screen">
     a:link {
       color: white;
@@ -59,27 +59,22 @@ if ($_SESSION['UserRole'] === 'admin') {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
-    /* Float five columns side by side */
     .column {
       float: left;
-      /*change the width to change the number of apps per row (20, 25, 40)*/
       width: 20%;
       padding: 10px;
     }
 
-    /* Remove extra left and right margins, due to padding */
     .row {
       margin: 0 -5px;
     }
 
-    /* Clear floats after the columns */
     .row:after {
       content: "";
       display: table;
       clear: both;
     }
 
-    /* Style the counter cards */
     .card {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       padding: 10px;
@@ -90,7 +85,6 @@ if ($_SESSION['UserRole'] === 'admin') {
       color: white;
       transform: scale(0.95);
       border: none;
-      /*height:15rem;*/
     }
 
     h3 {
@@ -107,7 +101,7 @@ if ($_SESSION['UserRole'] === 'admin') {
       width: 100%;
       height: 20px;
       text-align: center;
-      color: #923D41;
+      color: #57923d;
       font-size: small;
     }
 
@@ -136,18 +130,18 @@ if ($_SESSION['UserRole'] === 'admin') {
 
 <body>
 
-  
 
-  
-  
 
-  
+
+
+
+
   <?php
   include 'head.php';
   ?>
 
 
-  
+
   <div class="container">
     <div class="row">
 
@@ -158,7 +152,7 @@ if ($_SESSION['UserRole'] === 'admin') {
         if (!empty($enrolledCourses)) {
           foreach ($enrolledCourses as $course) {
             echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
-            echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+            echo "<div class='card h-100' style='background-color:#57923d'>";
             echo "<a href='student_attendance.php?courseID=" . $course['CourseID'] . "'>";
             echo "<i class='bx bx-badge-check'></i>";
             echo "<h5>" . $course['CourseCode'] . "</h5>";
@@ -171,7 +165,7 @@ if ($_SESSION['UserRole'] === 'admin') {
           }
         } else {
           echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
-          echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+          echo "<div class='card h-100' style='background-color:#57923d'>";
           echo "<h3>No courses enrolled.</h3>";
           echo "</div>";
           echo "</div>";
@@ -179,7 +173,7 @@ if ($_SESSION['UserRole'] === 'admin') {
       } else if ($_SESSION['UserRole'] === 'faculty') {
 
         echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
-        echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+        echo "<div class='card h-100' style='background-color:#57923d'>";
         echo "<a href='create_course.php'>";
         echo "<i class='bx bx-cog'></i>";
         echo "<h5> </h5>";
@@ -194,7 +188,7 @@ if ($_SESSION['UserRole'] === 'admin') {
         if (!empty($coursesTaught)) {
           foreach ($coursesTaught as $course) {
             echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
-            echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+            echo "<div class='card h-100' style='background-color:#57923d'>";
             echo "<a href='faculty_attendance.php?courseID=" . $course['CourseID'] . "'>";
             echo "<i class='bx bx-badge-check'></i>";
             echo "<h5>" . $course['CourseCode'] . "</h5>";
@@ -207,7 +201,7 @@ if ($_SESSION['UserRole'] === 'admin') {
           }
         } else {
           echo "<div class='col-lg-3 col-md-4 col-sm-6'>";
-          echo "<div class='card h-100' style='background-color:#5F9EA0'>";
+          echo "<div class='card h-100' style='background-color:#57923d'>";
           echo "<h3>No courses taught.</h3>";
           echo "</div>";
           echo "</div>";

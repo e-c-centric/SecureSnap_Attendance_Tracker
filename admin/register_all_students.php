@@ -28,12 +28,12 @@
         }
 
         a:hover {
-            color: #923D41;
+            color: #57923d;
             text-decoration: none;
         }
 
         a:active {
-            color: #923D41;
+            color: #57923d;
             text-decoration: none;
         }
 
@@ -60,13 +60,13 @@
 
         /*sweet alert button color*/
         .swal-button {
-            background-color: #923D41;
+            background-color: #57923d;
             padding: 7px 19px;
             box-shadow: none !important;
         }
 
         .swal-button:not([disabled]):hover {
-            background-color: #923D41;
+            background-color: #57923d;
         }
 
         /*tool tip flicker ussie resolve*/
@@ -76,7 +76,7 @@
 
         /*tab manu style*/
         .nav-tabs .nav-link.active {
-            background-color: #923D41;
+            background-color: #57923d;
             color: white;
         }
 
@@ -91,7 +91,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #923D41;">
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #57923d;">
         <a class="navbar-brand" href="../views/Dashboard.php">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>

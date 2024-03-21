@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../fontawesome/css/all.css">
+	<script src="../js/sweetalert.min.js"></script>
 
 	<style type="text/css">
 		.login-form {
@@ -52,17 +53,17 @@
 			</div>
 			<div class="form-group">
 				<label for="email"><i class="fas fa-envelope"></i></label>
-				<input type="email" name="email" placeholder="Email" id="email" required pattern="^[a-z0-9\\-\\']+@ashesi\.edu\.gh$" title="Email should be in the format: name@ashesi.edu.gh">
+				<input type="email" name="email" placeholder="Email" id="email" required pattern="^[a-z0-9\\-\\']+@ashesi\.edu\.gh$" title="Email should be in the format: FirstNameInitialLastName@ashesi.edu.gh">
 			</div>
 			<div class="form-group">
 				<select class="form-control" name="department" id="department" required>
 					<option value="0">Select Department</option>
-                                            <?php
-                                            include '../actions/get_all_departments.php';
-                                            foreach ($majors as $major) {
-                                                echo "<option value='" . $major['DepartmentID'] . "'>" . $major['DepartmentName'] . "</option>";
-                                            }
-                                            ?>
+					<?php
+					include '../actions/get_all_departments.php';
+					foreach ($majors as $major) {
+						echo "<option value='" . $major['DepartmentID'] . "'>" . $major['DepartmentName'] . "</option>";
+					}
+					?>
 				</select>
 			</div>
 
@@ -76,47 +77,76 @@
 			</div>
 
 			<div class="form-group">
-				<button type="submit" class="btn btn-block" id="submit" style="background-color: #923D41; color: white;">Register</button>
+				<button type="submit" class="btn btn-block" id="submit" style="background-color: #57923d; color: white;">Register</button>
 			</div>
 		</form>
 		<p class="text-center"><a href="login.php">Already have an account? Login</a></p>
 		<p class="text-center"><a href="mailto:elikem.gale-zoyiku@ashesi.edu.gh?subject=Desire%To%Register%As%A%Student">Want to register as a student?</a></p>
 	</div>
 
-<script>
+	<script>
 		document.getElementById("submit").addEventListener("click", function(event) {
 			event.preventDefault();
 			var password = document.getElementById("password").value;
 			var confirm_password = document.getElementById("confirm_password").value;
-			if (password != confirm_password) {
-				alert("Passwords do not match");
-				//discontinue form submission
+			console.log(checkEmail());
 
-			} else {
-				var form = document.querySelector('form');
-				var formData = new FormData(form);
-				$.ajax({
-					url: '../actions/register_faculty_action.php',
-					type: 'POST',
-					data: formData,
-					processData: false,
-					contentType: false,
-					success: function(data) {
-						console.log(data);
-						data = JSON.parse(data);
-						if (data["status"]) {
-							alert("Registration successful");
-							window.location.href = '../login/login.php';
-						} else {i
-							alert(data["message"]);
-						}
-					},
-					error: function(error) {
-						console.error('Error:', error);
-					}
+			if (password != confirm_password) {
+				swal("Passwords do not match", {
+					icon: "error",
 				});
 			}
+			if (checkEmail() == "false") {
+				swal("Only Ashesi faculty can use this feature", {
+					icon: "error",
+				});
+			}
+			var form = document.querySelector('form');
+			var formData = new FormData(form);
+			$.ajax({
+				url: '../actions/register_faculty_action.php',
+				type: 'POST',
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function(data) {
+					console.log(data);
+					data = JSON.parse(data);
+					if (data["status"]) {
+						swal("Registration Successful", {
+							icon: "success",
+						});
+						window.location.href = '../login/login.php';
+					} else {
+						swal(data["message"], {
+							icon: "error",
+						});
+					}
+				},
+				error: function(error) {
+					console.error('Error:', error);
+				}
+			});
 		});
+
+		function checkEmail() {
+			var email = document.getElementById("email").value;
+			if (email.includes("@ashesi.edu.gh")) {
+				function checkEmail() {
+					var email = document.getElementById("email").value;
+					if (email.includes("@ashesi.edu.gh")) {
+						var dotIndex = email.indexOf(".");
+						var atIndex = email.indexOf("@");
+						if (dotIndex > -1 && dotIndex > atIndex) {
+							return "success";
+						} else {
+							return "false";
+						}
+					}
+				};
+			}
+			return "false";
+		};
 	</script>
 </body>
 

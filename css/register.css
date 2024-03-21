@@ -37,7 +37,7 @@ body {
   align-items: center;
   width: 100px;
   height: 100px;
-  background-color: #b42b40;
+  background-color: #57923d;
   color: #ffffff;
 }
 
@@ -55,7 +55,7 @@ body {
   width: 100%;
   padding: 15px;
   margin-top: 20px;
-  background-color: #b42b40;
+  background-color: #57923d;
   border: 0;
   cursor: pointer;
   font-weight: bold;
@@ -64,6 +64,6 @@ body {
 }
 
 .register form input[type="submit"]:hover {
-  background-color: #b42b40;
+  background-color: #57923d;
   transition: background-color 0.2s;
 }

@@ -114,7 +114,7 @@ $courseID = $_GET['courseID'];
     <div class="register">
         <h1>Upload CSV File To Register Students In Your Course</h1>
         <form action="../actions/register_student_to_course_action.php" method="post" enctype="multipart/form-data">
-            <label for="csv_file">
+            <label for="csv_file" style="background-color: #57923d;">
                 <i class="fas fa-file-csv"></i> Choose File:
             </label>
             <input type="file" id="csv_file" name="csv_file" accept=".csv" required>

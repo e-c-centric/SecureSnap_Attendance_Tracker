@@ -1,12 +1,12 @@
 :root {
-  --primary: #a33f3f;
+  --primary: #57923d;
   --secondary: #61428f;
   --border-color: #dee2e6;
   --max-width: 1140px;
   --border-radius: 0.25rem;
   --button-text: #fff;
   --button-focus: 0 0 0 3px rgba(121, 82, 179, 0.25);
-  --link-color: #a32a2a;
+  --link-color: #57923d;
   --text-main: #363636;
   --text-bright: #000;
   --body-bg-color: #f9fafb;
@@ -19,7 +19,7 @@
   --input-background-color: #fff;
   --input-disabled: #f5f5f5;
   --input-focus: 0 0 0 3px rgba(121, 82, 179, 0.25);
-  --error: #dc3545;
+  --error: #57923d;
   --success: #198754;
   --warning: #664d03;
   --info: #0c5460;

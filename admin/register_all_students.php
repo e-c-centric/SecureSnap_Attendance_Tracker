@@ -160,7 +160,7 @@
 
                     <div class="modal-body">
                         <form action="../actions/enrol_students_using_csv_action.php" method="post" enctype="multipart/form-data">
-                            <label for="csv_file">
+                            <label for="csv_file" style="background-color: #57923d;">
                                 <i class="fas fa-file-csv"></i> Choose File:
                             </label>
                             <input type="file" id="csv_file" name="csv_file" accept=".csv" required>
